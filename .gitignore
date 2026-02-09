@@ -1,0 +1,29 @@
+# Environment
+.env
+
+# Storage (uploads and temp files)
+storage/uploads/*
+storage/cache/*
+storage/logs/*
+!storage/uploads/.gitkeep
+!storage/cache/.gitkeep
+!storage/logs/.gitkeep
+
+# Composer
+/vendor/
+
+# React admin build (built per deployment)
+public/admin/static/
+public/admin/index.html
+public/admin/assets/
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
