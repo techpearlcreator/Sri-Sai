@@ -13,6 +13,10 @@ storage/logs/*
 # Composer
 /vendor/
 
+# React admin dependencies and build
+frontend-admin/node_modules/
+frontend-admin/dist/
+
 # React admin build (built per deployment)
 public/admin/static/
 public/admin/index.html
