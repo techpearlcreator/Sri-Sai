@@ -80,12 +80,17 @@ class Router
 
             $params = $this->matchRoute($route['pattern'], $url);
             if ($params !== false) {
-                // Run middleware
+                // Run middleware (supports params via colon: 'RoleMiddleware:blogs,read')
                 foreach ($route['middleware'] as $mw) {
+                    $mwParams = [];
+                    if (str_contains($mw, ':')) {
+                        [$mw, $mwParamStr] = explode(':', $mw, 2);
+                        $mwParams = explode(',', $mwParamStr);
+                    }
                     $middlewareClass = "App\\Middleware\\{$mw}";
                     if (class_exists($middlewareClass)) {
                         $middlewareInstance = new $middlewareClass();
-                        $middlewareInstance->handle();
+                        $middlewareInstance->handle(...$mwParams);
                     }
                 }
 
