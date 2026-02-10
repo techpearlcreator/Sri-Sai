@@ -5,7 +5,8 @@
  */
 
 // --- Test Route (remove in production) ---
-$router->get('/api/v1/test', App\Controllers\Api\TestController::class, 'index');
+$router->get('/api/v1/test',        App\Controllers\Api\TestController::class, 'index');
+$router->get('/api/v1/test/models', App\Controllers\Api\TestController::class, 'models');
 
 // --- Authentication ---
 // $router->post('/api/v1/auth/login',    App\Controllers\Api\AuthController::class, 'login');
