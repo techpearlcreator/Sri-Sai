@@ -14,4 +14,11 @@ $router->post('/api/v1/auth/logout',   App\Controllers\Api\AuthController::class
 $router->get('/api/v1/auth/me',        App\Controllers\Api\AuthController::class, 'me',       ['AuthMiddleware']);
 $router->put('/api/v1/auth/password',  App\Controllers\Api\AuthController::class, 'changePassword', ['AuthMiddleware']);
 
+// --- Media ---
+$router->post('/api/v1/media/upload',  App\Controllers\Api\MediaController::class, 'upload',  ['AuthMiddleware', 'RoleMiddleware:media,create']);
+$router->get('/api/v1/media',          App\Controllers\Api\MediaController::class, 'index',   ['AuthMiddleware', 'RoleMiddleware:media,read']);
+$router->get('/api/v1/media/{id}',     App\Controllers\Api\MediaController::class, 'show',    ['AuthMiddleware', 'RoleMiddleware:media,read']);
+$router->put('/api/v1/media/{id}',     App\Controllers\Api\MediaController::class, 'update',  ['AuthMiddleware', 'RoleMiddleware:media,create']);
+$router->delete('/api/v1/media/{id}',  App\Controllers\Api\MediaController::class, 'destroy', ['AuthMiddleware', 'RoleMiddleware:media,delete']);
+
 // --- Routes will be uncommented as each API module is built ---

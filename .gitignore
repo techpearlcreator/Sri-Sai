@@ -6,6 +6,7 @@ storage/uploads/*
 storage/cache/*
 storage/logs/*
 !storage/uploads/.gitkeep
+!storage/uploads/.htaccess
 !storage/cache/.gitkeep
 !storage/logs/.gitkeep
 
