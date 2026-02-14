@@ -9,20 +9,32 @@
     'use strict';
 
     // Mobile menu toggle
-    var $menuToggle = $('.srisai-menu-toggle');
-    var $mobileNav = $('.srisai-mobile-nav');
-    var $overlay = $('.srisai-nav-overlay');
+    var $menuButton = $('.menu_mobile_button, .sc_layouts_menu_mobile_button');
+    var $mobileMenu = $('.menu_mobile');
+    var $menuOverlay = $('.menu_mobile_overlay');
+    var $menuClose = $('.menu_mobile_close');
 
-    $menuToggle.on('click', function() {
-        $mobileNav.toggleClass('active');
-        $overlay.toggleClass('active');
-        $('body').toggleClass('menu-open');
+    // Open mobile menu
+    $menuButton.on('click', function(e) {
+        e.preventDefault();
+        $mobileMenu.addClass('active');
+        $menuOverlay.addClass('active');
+        $('body').css('overflow', 'hidden');
     });
 
-    $overlay.on('click', function() {
-        $mobileNav.removeClass('active');
-        $overlay.removeClass('active');
-        $('body').removeClass('menu-open');
+    // Close mobile menu
+    $menuClose.on('click', function(e) {
+        e.preventDefault();
+        $mobileMenu.removeClass('active');
+        $menuOverlay.removeClass('active');
+        $('body').css('overflow', '');
+    });
+
+    // Close on overlay click
+    $menuOverlay.on('click', function() {
+        $mobileMenu.removeClass('active');
+        $menuOverlay.removeClass('active');
+        $('body').css('overflow', '');
     });
 
     // Scroll to top
@@ -50,8 +62,8 @@
     });
 
     // Magnific Popup for gallery
-    if ($('.gallery-popup').length) {
-        $('.gallery-popup').magnificPopup({
+    if ($('.gallery-item, [data-lightbox]').length) {
+        $('.gallery-item, [data-lightbox]').magnificPopup({
             type: 'image',
             gallery: { enabled: true },
             zoom: { enabled: true, duration: 300 }
