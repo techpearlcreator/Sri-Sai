@@ -47,6 +47,10 @@ class Controller
      */
     protected function render(string $viewPath, array $data = [], string $layout = 'layouts.master'): void
     {
+        // Define base URL and asset URL for all views
+        $baseUrl  = '/srisai/public';
+        $assetUrl = $baseUrl . '/assets';
+
         extract($data);
 
         // Render the view content first
