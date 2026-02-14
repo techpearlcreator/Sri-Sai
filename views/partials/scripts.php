@@ -1,7 +1,7 @@
 <!-- Core JS -->
 <script src="<?= $assetUrl ?>/js/jquery.min.js"></script>
 <script src="<?= $assetUrl ?>/js/swiper-bundle.min.js"></script>
-<script src="<?= $assetUrl ?>/js/magnific-popup.min.js"></script>
+<script src="<?= $assetUrl ?>/js/jquery.magnific-popup.min.js"></script>
 <script src="<?= $assetUrl ?>/js/odometer.min.js"></script>
 
 <!-- Sri Sai Custom JS -->
