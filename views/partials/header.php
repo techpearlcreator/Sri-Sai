@@ -21,7 +21,7 @@
 
         <!-- Header Actions -->
         <div class="header-actions">
-            <a href="<?= $baseUrl ?>/donations" class="btn btn-accent btn-sm">Donate</a>
+            <a href="<?= $baseUrl ?>/donations" class="btn btn-donate">Donate</a>
             <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open menu">
                 <span></span><span></span><span></span>
             </button>

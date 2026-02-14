@@ -58,10 +58,17 @@ img { max-width: 100%; height: auto; }
 
 /* ========== Header ========== */
 .site-header {
-    background: var(--color-primary);
-    position: sticky;
+    background: transparent;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
+    transition: background 0.3s ease;
+}
+
+.site-header.scrolled {
+    background: var(--color-primary);
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
@@ -84,7 +91,7 @@ img { max-width: 100%; height: auto; }
 .main-navigation ul {
     display: flex;
     list-style: none;
-    gap: 25px;
+    gap: 30px;
     margin: 0;
     padding: 0;
 }
@@ -98,11 +105,29 @@ img { max-width: 100%; height: auto; }
     transition: var(--transition-base);
     padding: 10px 0;
     display: block;
+    position: relative;
+}
+
+/* Underline hover effect */
+.main-navigation a::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+.main-navigation a:hover::after,
+.main-navigation a.active::after {
+    width: 100%;
 }
 
 .main-navigation a:hover,
 .main-navigation a.active {
-    color: var(--color-accent);
+    color: var(--color-white);
 }
 
 .header-actions {
@@ -115,6 +140,23 @@ img { max-width: 100%; height: auto; }
     padding: 10px 24px;
     font-size: 12px;
     letter-spacing: 1px;
+}
+
+.btn-donate {
+    background: var(--color-primary-light);
+    color: var(--color-white);
+    border-color: var(--color-primary-light);
+    padding: 10px 30px;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.btn-donate:hover {
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(95,44,112,0.3);
 }
 
 /* Mobile Menu Toggle (Hamburger) */
@@ -276,7 +318,7 @@ img { max-width: 100%; height: auto; }
 /* ========== Hero Slider ========== */
 .hero-section {
     position: relative;
-    height: 980px;
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -633,20 +675,23 @@ img { max-width: 100%; height: auto; }
 /* ========== Prayer Times Section ========== */
 .prayer-grid {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 40px;
-    align-items: center;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 30px;
+    align-items: stretch;
 }
 
 .prayer-card,
 .visit-card {
-    padding: 40px;
+    padding: 35px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
 }
 
 .prayer-card {
-    background: var(--color-white);
+    background: var(--color-light-bg);
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .visit-card {
@@ -696,11 +741,18 @@ img { max-width: 100%; height: auto; }
     border-bottom: none;
 }
 
+.prayer-image {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
 .prayer-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    display: block;
     border-radius: var(--radius);
-    box-shadow: var(--shadow);
 }
 
 /* ========== Donation Form ========== */
@@ -1642,7 +1694,7 @@ img { max-width: 100%; height: auto; }
 }
 
 @media (max-width: 1023px) {
-    .hero-section { height: 700px; }
+    .hero-section { height: 100vh; }
     .hero-title { font-size: 32px; }
     .hero-slider-button-prev,
     .hero-slider-button-next { display: none; }
@@ -1657,7 +1709,7 @@ img { max-width: 100%; height: auto; }
 
 @media (max-width: 767px) {
     .header-container { padding: 15px 20px; }
-    .hero-section { height: 480px; }
+    .hero-section { height: 100vh; }
     .hero-title { font-size: 28px; }
     .hero-tagline { font-size: 16px; }
     .hero-content { padding: 0 20px; }
@@ -1690,7 +1742,7 @@ img { max-width: 100%; height: auto; }
     .srisai-magazine-grid { grid-template-columns: 1fr; }
     .srisai-trustees-grid { grid-template-columns: 1fr; }
     .stat-number { font-size: 48px; }
-    .hero-section { height: 400px; }
+    .hero-section { height: 100vh; }
 }
 
 /* ========== Footer ========== */

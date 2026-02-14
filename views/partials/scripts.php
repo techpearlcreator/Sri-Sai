@@ -31,10 +31,13 @@
     $menuClose.on('click', closeMenu);
     $overlay.on('click', closeMenu);
 
-    // ========== Scroll to Top ==========
+    // ========== Header Scroll Effect ==========
+    var $header = $('.site-header');
     var $scrollTop = $('.scroll-to-top');
     $(window).on('scroll', function() {
-        $scrollTop.toggleClass('visible', $(this).scrollTop() > 300);
+        var scrollPos = $(this).scrollTop();
+        $header.toggleClass('scrolled', scrollPos > 80);
+        $scrollTop.toggleClass('visible', scrollPos > 300);
     });
 
     $scrollTop.on('click', function(e) {
