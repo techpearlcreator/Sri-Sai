@@ -23,11 +23,10 @@ class Controller
     }
 
     /**
-     * Render a PHP view.
+     * Render a PHP view (without layout).
      */
     protected function view(string $viewPath, array $data = []): void
     {
-        // Extract data into local variables for the view
         extract($data);
 
         $file = VIEWS_PATH . '/' . str_replace('.', '/', $viewPath) . '.php';
@@ -38,12 +37,42 @@ class Controller
             return;
         }
 
-        // Start output buffering for the content
         ob_start();
         require $file;
-        $content = ob_get_clean();
+        echo ob_get_clean();
+    }
 
-        echo $content;
+    /**
+     * Render a view within a layout.
+     */
+    protected function render(string $viewPath, array $data = [], string $layout = 'layouts.master'): void
+    {
+        // Define base URL and asset URL for all views
+        $baseUrl  = '/srisai/public';
+        $assetUrl = $baseUrl . '/assets';
+
+        extract($data);
+
+        // Render the view content first
+        $viewFile = VIEWS_PATH . '/' . str_replace('.', '/', $viewPath) . '.php';
+        if (!file_exists($viewFile)) {
+            http_response_code(500);
+            echo "View not found: {$viewPath}";
+            return;
+        }
+
+        ob_start();
+        require $viewFile;
+        $__content = ob_get_clean();
+
+        // Render within layout
+        $layoutFile = VIEWS_PATH . '/' . str_replace('.', '/', $layout) . '.php';
+        if (!file_exists($layoutFile)) {
+            echo $__content;
+            return;
+        }
+
+        require $layoutFile;
     }
 
     /**
