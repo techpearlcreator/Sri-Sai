@@ -1,3 +1,23 @@
-/* Reset — minimal base styles */
-html { line-height: 1.5; -webkit-text-size-adjust: 100%; font-synthesis: none; text-rendering: optimizeLegibility; }
+/* Base styles */
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 #root { min-height: 100vh; }
+
+/* Selection color */
+::selection {
+  background: rgba(95, 44, 112, 0.2);
+  color: #1D0427;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(29,4,39,0.15); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(29,4,39,0.25); }

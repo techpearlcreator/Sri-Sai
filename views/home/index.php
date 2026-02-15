@@ -154,7 +154,7 @@
 </section>
 
 <!-- Video Section -->
-<section class="section video-section" id="video-section" style="background-image: url('<?= $assetUrl ?>/images/hero-slider-1.jpg'); min-height: 500px; background-size: cover; background-position: center;">
+<section class="section video-section" id="video-section" style="background-image: url('<?= $assetUrl ?>/images/public/assets/images/image-6-copyright.jpg'); min-height: 600px; background-size: cover; background-position: center;">
     <div class="video-overlay"></div>
     <div class="section-container" style="text-align: center; position: relative; z-index: 2;">
         <button type="button" class="video-play-btn" id="video-play-btn">

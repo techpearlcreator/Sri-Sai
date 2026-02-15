@@ -41,7 +41,13 @@ export default function AdminLayout() {
       {/* Sidebar */}
       <aside className={`sidebar ${sidebarOpen ? 'sidebar--open' : ''}`}>
         <div className="sidebar__header">
-          <h2>Sri Sai Admin</h2>
+          <div className="sidebar__brand">
+            <span className="sidebar__logo">ॐ</span>
+            <div>
+              <h2>Sri Sai Mission</h2>
+              <span className="sidebar__subtitle">Admin Panel</span>
+            </div>
+          </div>
           <button className="sidebar__close" onClick={() => setSidebarOpen(false)}>
             <HiOutlineX size={20} />
           </button>

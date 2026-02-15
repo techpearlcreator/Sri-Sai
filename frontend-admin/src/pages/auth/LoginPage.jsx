@@ -29,6 +29,7 @@ export default function LoginPage() {
     <div className="login-page">
       <div className="login-card">
         <div className="login-header">
+          <div className="login-logo">ॐ</div>
           <h1>Sri Sai Mission</h1>
           <p>Admin Panel</p>
         </div>
