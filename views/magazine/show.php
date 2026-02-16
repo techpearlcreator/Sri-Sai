@@ -13,12 +13,12 @@
                 <h1><?= htmlspecialchars($magazine->title) ?></h1>
                 <div class="srisai-article__meta">
                     <?php if (!empty($magazine->issue_number)): ?><span>Issue #<?= htmlspecialchars($magazine->issue_number) ?></span><?php endif; ?>
-                    <span><?= htmlspecialchars(($magazine->issue_month ?? '') . ' ' . ($magazine->issue_year ?? '')) ?></span>
+                    <span><?= !empty($magazine->issue_date) ? date('F Y', strtotime($magazine->issue_date)) : '' ?></span>
                 </div>
             </header>
 
-            <?php if (!empty($magazine->cover_image)): ?>
-            <div class="srisai-article__image"><img src="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($magazine->cover_image) ?>" alt="<?= htmlspecialchars($magazine->title) ?>"></div>
+            <?php if (!empty($magazine->featured_image)): ?>
+            <div class="srisai-article__image"><img src="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($magazine->featured_image) ?>" alt="<?= htmlspecialchars($magazine->title) ?>"></div>
             <?php endif; ?>
 
             <?php if (!empty($magazine->pdf_file)): ?>

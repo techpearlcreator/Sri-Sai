@@ -12,7 +12,7 @@
             <article class="srisai-article">
                 <?php if (!empty($page->featured_image)): ?>
                     <div class="srisai-article__image">
-                        <img src="<?= $assetUrl ?>/uploads/<?= htmlspecialchars($page->featured_image) ?>" alt="<?= htmlspecialchars($page->title) ?>">
+                        <img src="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($page->featured_image) ?>" alt="<?= htmlspecialchars($page->title) ?>">
                     </div>
                 <?php endif; ?>
 

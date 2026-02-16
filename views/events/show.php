@@ -29,7 +29,7 @@
 
                 <?php if (!empty($event->featured_image)): ?>
                     <div class="srisai-article__image">
-                        <img src="<?= $assetUrl ?>/uploads/<?= htmlspecialchars($event->featured_image) ?>" alt="<?= htmlspecialchars($event->title) ?>">
+                        <img src="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($event->featured_image) ?>" alt="<?= htmlspecialchars($event->title) ?>">
                     </div>
                 <?php endif; ?>
 

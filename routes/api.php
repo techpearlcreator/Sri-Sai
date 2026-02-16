@@ -76,8 +76,8 @@ $router->delete('/api/v1/pages/{id}',  App\Controllers\Api\PageController::class
 $router->get('/api/v1/trustees',            App\Controllers\Api\TrusteeController::class, 'index',   ['AuthMiddleware', 'RoleMiddleware:trustees,read']);
 $router->get('/api/v1/trustees/{id}',       App\Controllers\Api\TrusteeController::class, 'show',    ['AuthMiddleware', 'RoleMiddleware:trustees,read']);
 $router->post('/api/v1/trustees',           App\Controllers\Api\TrusteeController::class, 'store',   ['AuthMiddleware', 'RoleMiddleware:trustees,create']);
-$router->put('/api/v1/trustees/{id}',       App\Controllers\Api\TrusteeController::class, 'update',  ['AuthMiddleware', 'RoleMiddleware:trustees,update']);
 $router->put('/api/v1/trustees/reorder',    App\Controllers\Api\TrusteeController::class, 'reorder', ['AuthMiddleware', 'RoleMiddleware:trustees,update']);
+$router->put('/api/v1/trustees/{id}',       App\Controllers\Api\TrusteeController::class, 'update',  ['AuthMiddleware', 'RoleMiddleware:trustees,update']);
 $router->delete('/api/v1/trustees/{id}',    App\Controllers\Api\TrusteeController::class, 'destroy', ['AuthMiddleware', 'RoleMiddleware:trustees,delete']);
 
 // --- Donations ---
@@ -92,8 +92,8 @@ $router->delete('/api/v1/donations/{id}',   App\Controllers\Api\DonationControll
 $router->get('/api/v1/contacts',              App\Controllers\Api\ContactController::class, 'index',      ['AuthMiddleware', 'RoleMiddleware:contacts,read']);
 $router->get('/api/v1/contacts/unread-count', App\Controllers\Api\ContactController::class, 'unreadCount',['AuthMiddleware']);
 $router->get('/api/v1/contacts/{id}',         App\Controllers\Api\ContactController::class, 'show',       ['AuthMiddleware', 'RoleMiddleware:contacts,read']);
-$router->put('/api/v1/contacts/{id}',         App\Controllers\Api\ContactController::class, 'update',     ['AuthMiddleware', 'RoleMiddleware:contacts,update']);
 $router->put('/api/v1/contacts/bulk',         App\Controllers\Api\ContactController::class, 'bulk',       ['AuthMiddleware', 'RoleMiddleware:contacts,delete']);
+$router->put('/api/v1/contacts/{id}',         App\Controllers\Api\ContactController::class, 'update',     ['AuthMiddleware', 'RoleMiddleware:contacts,update']);
 $router->delete('/api/v1/contacts/{id}',      App\Controllers\Api\ContactController::class, 'destroy',    ['AuthMiddleware', 'RoleMiddleware:contacts,delete']);
 
 // --- Contact Form (PUBLIC — no auth) ---

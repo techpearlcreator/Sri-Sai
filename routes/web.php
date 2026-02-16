@@ -27,6 +27,8 @@ $router->get('/trustees', App\Controllers\Web\TrusteeController::class, 'index')
 
 // --- Donations ---
 $router->get('/donations', App\Controllers\Web\DonationController::class, 'index');
+$router->post('/donations/create-order', App\Controllers\Web\PaymentController::class, 'createOrder');
+$router->post('/donations/verify', App\Controllers\Web\PaymentController::class, 'verify');
 
 // --- Contact ---
 $router->get('/contact', App\Controllers\Web\ContactController::class, 'index');

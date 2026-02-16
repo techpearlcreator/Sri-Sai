@@ -5,21 +5,21 @@ import Modal from '../../components/Modal';
 
 export default function TimingForm({ item, onClose, onSaved }) {
   const [form, setForm] = useState({
-    pooja_name: '', description: '', day_type: 'daily',
-    start_time: '', end_time: '', location: '', display_order: 0, is_active: true,
+    title: '', description: '', day_type: 'daily',
+    start_time: '', end_time: '', location: '', sort_order: 0, is_active: true,
   });
   const [saving, setSaving] = useState(false);
   const isEdit = !!item;
 
   useEffect(() => {
     if (item) {
-      client.get(`/timings/${item.id}`).then((res) => {
+      client.get(`/temple-timings/${item.id}`).then((res) => {
         const d = res.data.data;
         setForm({
-          pooja_name: d.pooja_name || '', description: d.description || '',
+          title: d.title || '', description: d.description || '',
           day_type: d.day_type || 'daily',
           start_time: d.start_time || '', end_time: d.end_time || '',
-          location: d.location || '', display_order: d.display_order || 0,
+          location: d.location || '', sort_order: d.sort_order || 0,
           is_active: d.is_active !== undefined ? !!d.is_active : true,
         });
       }).catch(() => toast.error('Failed to load timing'));
@@ -34,10 +34,10 @@ export default function TimingForm({ item, onClose, onSaved }) {
     try {
       const payload = { ...form, is_active: form.is_active ? 1 : 0 };
       if (isEdit) {
-        await client.put(`/timings/${item.id}`, payload);
+        await client.put(`/temple-timings/${item.id}`, payload);
         toast.success('Timing updated');
       } else {
-        await client.post('/timings', payload);
+        await client.post('/temple-timings', payload);
         toast.success('Timing added');
       }
       onSaved();
@@ -51,7 +51,7 @@ export default function TimingForm({ item, onClose, onSaved }) {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Pooja / Event Name</label>
-          <input value={form.pooja_name} onChange={(e) => handleChange('pooja_name', e.target.value)} required minLength={2} />
+          <input value={form.title} onChange={(e) => handleChange('title', e.target.value)} required minLength={2} />
         </div>
 
         <div className="form-row">
@@ -88,7 +88,7 @@ export default function TimingForm({ item, onClose, onSaved }) {
           </div>
           <div className="form-group">
             <label>Display Order</label>
-            <input type="number" value={form.display_order} onChange={(e) => handleChange('display_order', parseInt(e.target.value) || 0)} min={0} />
+            <input type="number" value={form.sort_order} onChange={(e) => handleChange('sort_order', parseInt(e.target.value) || 0)} min={0} />
           </div>
         </div>
 

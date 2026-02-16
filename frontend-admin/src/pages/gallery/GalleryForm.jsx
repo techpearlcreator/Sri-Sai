@@ -13,7 +13,7 @@ export default function GalleryForm({ item, onClose, onSaved }) {
 
   useEffect(() => {
     if (item) {
-      client.get(`/gallery/albums/${item.id}`).then((res) => {
+      client.get(`/gallery/${item.id}`).then((res) => {
         const d = res.data.data;
         setForm({
           title: d.title || '', description: d.description || '',
@@ -30,10 +30,10 @@ export default function GalleryForm({ item, onClose, onSaved }) {
     setSaving(true);
     try {
       if (isEdit) {
-        await client.put(`/gallery/albums/${item.id}`, form);
+        await client.put(`/gallery/${item.id}`, form);
         toast.success('Album updated');
       } else {
-        await client.post('/gallery/albums', form);
+        await client.post('/gallery', form);
         toast.success('Album created');
       }
       onSaved();

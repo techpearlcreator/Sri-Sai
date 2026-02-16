@@ -38,10 +38,59 @@
                 </div>
             <?php endif; ?>
 
-            <div style="margin-top:50px; text-align:center; padding:40px; background:var(--srisai-bg-light); border-radius:var(--srisai-radius);">
-                <h3 style="margin:0 0 15px;">Ready to Make a Difference?</h3>
-                <p style="margin:0 0 25px; font-size:17px; color:#666;">Contact us to learn more about donation opportunities</p>
-                <a href="<?= $baseUrl ?>/contact" class="srisai-btn srisai-btn--primary">Get in Touch</a>
+            <!-- Donation Form -->
+            <div class="donation-form" style="margin-top:60px;">
+                <h2 style="text-align:center; margin-bottom:40px; color:var(--color-text-dark);">Make Your Donation</h2>
+                <form id="srisai-donation-form">
+                    <div class="donation-amount-wrap">
+                        <label class="donation-label">Donation Amount (&#8377;):</label>
+                        <input class="donation-amount-input" id="donation-amount" name="amount" type="number" value="100" min="10" required>
+                    </div>
+
+                    <div class="donation-amounts">
+                        <button type="button" class="amount-btn active" data-amount="100">&#8377;100</button>
+                        <button type="button" class="amount-btn" data-amount="500">&#8377;500</button>
+                        <button type="button" class="amount-btn" data-amount="1000">&#8377;1000</button>
+                        <button type="button" class="amount-btn" data-amount="custom">Custom</button>
+                    </div>
+
+                    <fieldset class="donation-personal-info">
+                        <legend>Personal Info</legend>
+                        <div class="form-row-group">
+                            <div class="form-row">
+                                <label for="donor-first-name">First Name <span class="required">*</span></label>
+                                <input type="text" id="donor-first-name" name="first_name" required>
+                            </div>
+                            <div class="form-row">
+                                <label for="donor-last-name">Last Name</label>
+                                <input type="text" id="donor-last-name" name="last_name">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label for="donor-email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="donor-email" name="email" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="donor-phone">Phone Number</label>
+                            <input type="tel" id="donor-phone" name="phone">
+                        </div>
+                        <div class="form-row">
+                            <label for="donor-comment">Comment</label>
+                            <textarea id="donor-comment" name="comment" rows="4" placeholder="Leave a comment"></textarea>
+                        </div>
+                    </fieldset>
+
+                    <div class="donation-total-wrap">
+                        <span class="donation-total-label">Donation Total:</span>
+                        <span class="donation-total-amount">&#8377;<span id="donation-total-display">100</span></span>
+                    </div>
+
+                    <div class="donation-submit-wrap">
+                        <button type="submit" class="btn btn-accent donation-submit-btn">Donate via Razorpay</button>
+                        <div class="donation-message"></div>
+                        <p style="margin-top:10px; font-size:12px; color:#888;">Secure payment powered by Razorpay</p>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

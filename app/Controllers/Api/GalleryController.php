@@ -174,10 +174,11 @@ class GalleryController extends Controller
         $result = ImageService::upload('file', 'gallery');
 
         // Get next sort order
-        $maxSort = GalleryImage::query()
-            ->where('album_id', '=', (int) $albumId)
-            ->select('MAX(sort_order) as max_sort')
-            ->first();
+        $db = \App\Core\Database::getInstance();
+        $maxSort = $db->fetch(
+            "SELECT MAX(sort_order) as max_sort FROM `gallery_images` WHERE `album_id` = ?",
+            [(int) $albumId]
+        );
         $nextSort = ($maxSort->max_sort ?? 0) + 1;
 
         $image = GalleryImage::create([

@@ -39,38 +39,171 @@
         <div class="section-header">
             <h2 class="section-title">Our Activities</h2>
         </div>
-        <div class="services-grid">
-            <div class="service-item animate-on-scroll">
-                <span class="service-icon icon-lotus-1"></span>
-                <h4 class="service-title"><a href="<?= $baseUrl ?>/about">Annadhanam</a></h4>
-                <p class="service-description">Free food distribution to devotees and the needy</p>
-                <a href="<?= $baseUrl ?>/about" class="service-link">
-                    Read more <span class="icon-arrow-right-alt"></span>
-                </a>
-            </div>
-            <div class="service-item animate-on-scroll">
-                <span class="service-icon icon-oil-lamp"></span>
-                <h4 class="service-title"><a href="<?= $baseUrl ?>/about">Temple Pooja</a></h4>
-                <p class="service-description">Daily worship at our temples in Chennai</p>
-                <a href="<?= $baseUrl ?>/about" class="service-link">
-                    Read more <span class="icon-arrow-right-alt"></span>
-                </a>
-            </div>
-            <div class="service-item animate-on-scroll">
-                <span class="service-icon icon-mandala"></span>
-                <h4 class="service-title"><a href="<?= $baseUrl ?>/events">Spiritual Events</a></h4>
-                <p class="service-description">Festivals, bhajans and satsangs throughout the year</p>
-                <a href="<?= $baseUrl ?>/events" class="service-link">
-                    Read more <span class="icon-arrow-right-alt"></span>
-                </a>
-            </div>
-            <div class="service-item animate-on-scroll">
-                <span class="service-icon icon-hamsa"></span>
-                <h4 class="service-title"><a href="<?= $baseUrl ?>/magazine">Sri Sai Dharisanam</a></h4>
-                <p class="service-description">Monthly spiritual magazine for devotees</p>
-                <a href="<?= $baseUrl ?>/magazine" class="service-link">
-                    Read more <span class="icon-arrow-right-alt"></span>
-                </a>
+        <div class="sc_icons sc_icons_figure sc_icons_qw-stylish sc_align_center">
+            <div class="sc_icons_columns_wrap trx_addons_columns_wrap">
+                <!-- Annadhanam -->
+                <div class="trx_addons_column-1_4">
+                    <div class="sc_icons_item sc_icons_item_linked with_more">
+                        <div class="sc_icons_item_shine"></div>
+                        <div class="sc_icons_item_background">
+                            <div class="sc_icons_item_tiles">
+                                <div class="sc_icons_item_tile sc_icons_item_tile-1"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-2"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-3"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-4"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-5"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-6"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-7"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-8"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-9"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-10"></div>
+                            </div>
+                            <div class="sc_icons_item_lines">
+                                <div class="sc_icons_item_line sc_icons_item_line-1"></div>
+                                <div class="sc_icons_item_line sc_icons_item_line-2"></div>
+                                <div class="sc_icons_item_line sc_icons_item_line-3"></div>
+                            </div>
+                        </div>
+                        <div class="sc_icons_icon">
+                            <span class="icon-lotus-1"></span>
+                        </div>
+                        <div class="sc_icons_item_details">
+                            <h4 class="sc_icons_item_title">
+                                <a href="<?= $baseUrl ?>/about">Annadhanam</a>
+                            </h4>
+                            <div class="sc_icons_item_description">
+                                <span>Free food distribution to devotees and the needy</span>
+                            </div>
+                            <a href="<?= $baseUrl ?>/about" class="sc_icons_item_more_link">
+                                <span class="link_text">Read more</span>
+                                <span class="link_icon"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Temple Pooja -->
+                <div class="trx_addons_column-1_4">
+                    <div class="sc_icons_item sc_icons_item_linked with_more">
+                        <div class="sc_icons_item_shine"></div>
+                        <div class="sc_icons_item_background">
+                            <div class="sc_icons_item_tiles">
+                                <div class="sc_icons_item_tile sc_icons_item_tile-1"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-2"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-3"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-4"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-5"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-6"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-7"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-8"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-9"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-10"></div>
+                            </div>
+                            <div class="sc_icons_item_lines">
+                                <div class="sc_icons_item_line sc_icons_item_line-1"></div>
+                                <div class="sc_icons_item_line sc_icons_item_line-2"></div>
+                                <div class="sc_icons_item_line sc_icons_item_line-3"></div>
+                            </div>
+                        </div>
+                        <div class="sc_icons_icon">
+                            <span class="icon-oil-lamp"></span>
+                        </div>
+                        <div class="sc_icons_item_details">
+                            <h4 class="sc_icons_item_title">
+                                <a href="<?= $baseUrl ?>/about">Temple Pooja</a>
+                            </h4>
+                            <div class="sc_icons_item_description">
+                                <span>Daily worship at our temples in Chennai</span>
+                            </div>
+                            <a href="<?= $baseUrl ?>/about" class="sc_icons_item_more_link">
+                                <span class="link_text">Read more</span>
+                                <span class="link_icon"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spiritual Events -->
+                <div class="trx_addons_column-1_4">
+                    <div class="sc_icons_item sc_icons_item_linked with_more">
+                        <div class="sc_icons_item_shine"></div>
+                        <div class="sc_icons_item_background">
+                            <div class="sc_icons_item_tiles">
+                                <div class="sc_icons_item_tile sc_icons_item_tile-1"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-2"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-3"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-4"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-5"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-6"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-7"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-8"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-9"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-10"></div>
+                            </div>
+                            <div class="sc_icons_item_lines">
+                                <div class="sc_icons_item_line sc_icons_item_line-1"></div>
+                                <div class="sc_icons_item_line sc_icons_item_line-2"></div>
+                                <div class="sc_icons_item_line sc_icons_item_line-3"></div>
+                            </div>
+                        </div>
+                        <div class="sc_icons_icon">
+                            <span class="icon-mandala"></span>
+                        </div>
+                        <div class="sc_icons_item_details">
+                            <h4 class="sc_icons_item_title">
+                                <a href="<?= $baseUrl ?>/events">Spiritual Events</a>
+                            </h4>
+                            <div class="sc_icons_item_description">
+                                <span>Festivals, bhajans and satsangs throughout the year</span>
+                            </div>
+                            <a href="<?= $baseUrl ?>/events" class="sc_icons_item_more_link">
+                                <span class="link_text">Read more</span>
+                                <span class="link_icon"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sri Sai Dharisanam -->
+                <div class="trx_addons_column-1_4">
+                    <div class="sc_icons_item sc_icons_item_linked with_more">
+                        <div class="sc_icons_item_shine"></div>
+                        <div class="sc_icons_item_background">
+                            <div class="sc_icons_item_tiles">
+                                <div class="sc_icons_item_tile sc_icons_item_tile-1"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-2"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-3"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-4"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-5"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-6"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-7"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-8"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-9"></div>
+                                <div class="sc_icons_item_tile sc_icons_item_tile-10"></div>
+                            </div>
+                            <div class="sc_icons_item_lines">
+                                <div class="sc_icons_item_line sc_icons_item_line-1"></div>
+                                <div class="sc_icons_item_line sc_icons_item_line-2"></div>
+                                <div class="sc_icons_item_line sc_icons_item_line-3"></div>
+                            </div>
+                        </div>
+                        <div class="sc_icons_icon">
+                            <span class="icon-hamsa"></span>
+                        </div>
+                        <div class="sc_icons_item_details">
+                            <h4 class="sc_icons_item_title">
+                                <a href="<?= $baseUrl ?>/magazine">Sri Sai Dharisanam</a>
+                            </h4>
+                            <div class="sc_icons_item_description">
+                                <span>Monthly spiritual magazine for devotees</span>
+                            </div>
+                            <a href="<?= $baseUrl ?>/magazine" class="sc_icons_item_more_link">
+                                <span class="link_text">Read more</span>
+                                <span class="link_icon"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -119,20 +252,20 @@
 <section class="section stats-section" id="stats">
     <div class="section-container">
         <div class="stats-grid">
-            <div class="stat-item animate-on-scroll">
-                <div class="stat-number odometer" data-count="5000">0</div>
+            <div class="stat-item">
+                <div class="stat-bg-number" data-count="5000">0</div>
                 <div class="stat-label">Devotees</div>
             </div>
-            <div class="stat-item animate-on-scroll">
-                <div class="stat-number odometer" data-count="2">0</div>
+            <div class="stat-item">
+                <div class="stat-bg-number" data-count="2">0</div>
                 <div class="stat-label">Temples</div>
             </div>
-            <div class="stat-item animate-on-scroll">
-                <div class="stat-number odometer" data-count="15">0</div>
+            <div class="stat-item">
+                <div class="stat-bg-number" data-count="15">0</div>
                 <div class="stat-label">Trustees</div>
             </div>
-            <div class="stat-item animate-on-scroll">
-                <div class="stat-number odometer" data-count="50">0</div>
+            <div class="stat-item">
+                <div class="stat-bg-number" data-count="50">0</div>
                 <div class="stat-label">Events/Year</div>
             </div>
         </div>
@@ -154,7 +287,7 @@
 </section>
 
 <!-- Video Section -->
-<section class="section video-section" id="video-section" style="background-image: url('<?= $assetUrl ?>/images/public/assets/images/image-6-copyright.jpg'); min-height: 600px; background-size: cover; background-position: center;">
+<section class="section video-section" id="video-section" style="background-image: url('<?= $assetUrl ?>/images/hero-slider-1.jpg'); min-height: 500px; background-size: cover; background-position: center;">
     <div class="video-overlay"></div>
     <div class="section-container" style="text-align: center; position: relative; z-index: 2;">
         <button type="button" class="video-play-btn" id="video-play-btn">
@@ -168,13 +301,13 @@
     <div class="section-container">
         <div class="prayer-grid">
             <!-- Prayer Times Card -->
-            <div class="prayer-card animate-on-scroll">
+            <div class="prayer-card prayer-slide-left floating-card">
                 <h3 class="prayer-card-title">Prayer times</h3>
                 <p class="prayer-card-desc">Daily worship schedule at our temples</p>
                 <ul class="prayer-times-list">
                     <?php if (!empty($timings)): ?>
                         <?php foreach (array_slice($timings, 0, 3) as $t): ?>
-                            <li><?= htmlspecialchars($t->pooja_name) ?>: <?= htmlspecialchars($t->start_time) ?></li>
+                            <li><?= htmlspecialchars($t->title) ?>: <?= htmlspecialchars($t->start_time) ?></li>
                         <?php endforeach; ?>
                     <?php else: ?>
                         <li>Morning Pooja: 6:00 AM - 8:00 AM</li>
@@ -185,12 +318,12 @@
             </div>
 
             <!-- Temple Image -->
-            <div class="prayer-image animate-on-scroll">
+            <div class="prayer-image">
                 <img src="<?= $assetUrl ?>/images/prayer-times-bg.jpg" alt="Sri Sai Temple">
             </div>
 
             <!-- Book a Visit Card -->
-            <div class="visit-card animate-on-scroll">
+            <div class="visit-card prayer-slide-right floating-card">
                 <h3 class="visit-card-title">Book a visit</h3>
                 <p class="visit-card-desc">Come experience the divine atmosphere at our temples</p>
                 <a href="<?= $baseUrl ?>/contact" class="btn btn-outline">Contact Us</a>
@@ -209,7 +342,7 @@
         </div>
 
         <div class="donation-form">
-            <form id="srisai-donation-form" method="POST" action="<?= $baseUrl ?>/donations/submit">
+            <form id="srisai-donation-form">
                 <div class="donation-amount-wrap">
                     <label class="donation-label">Donation Amount (&#8377;):</label>
                     <input class="donation-amount-input" id="donation-amount" name="amount" type="number" value="100" min="10" required>
@@ -254,8 +387,9 @@
                 </div>
 
                 <div class="donation-submit-wrap">
-                    <button type="submit" class="btn btn-accent donation-submit-btn">Donate Now</button>
+                    <button type="submit" class="btn btn-accent donation-submit-btn">Donate via Razorpay</button>
                     <div class="donation-message"></div>
+                    <p style="margin-top:10px; font-size:12px; color:#888;">Secure payment powered by Razorpay</p>
                 </div>
             </form>
         </div>

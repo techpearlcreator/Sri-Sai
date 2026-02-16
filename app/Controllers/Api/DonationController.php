@@ -165,7 +165,9 @@ class DonationController extends Controller
      */
     public function summary(): void
     {
-        $monthly = Donation::monthlySummary();
+        $year  = (int) ($this->getQuery('year')  ?: date('Y'));
+        $month = (int) ($this->getQuery('month') ?: date('m'));
+        $monthly = Donation::monthlySummary($year, $month);
         $this->json($monthly);
     }
 }

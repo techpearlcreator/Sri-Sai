@@ -20,14 +20,7 @@ class BlogController extends Controller
         $page = max(1, (int) $this->getQuery('page', 1));
         $perPage = min(50, max(1, (int) $this->getQuery('per_page', 15)));
 
-        $query = Blog::query()
-            ->select('b.*, c.name as category_name, u.name as author_name')
-            ->join('LEFT JOIN categories c ON b.category_id = c.id')
-            ->join('LEFT JOIN admin_users u ON b.created_by = u.id');
-
-        // Alias: blogs table uses `b` via the first letter convention in Model
-        // Actually the join uses raw SQL, so we need the table aliased
-        // Let me build this with raw query approach instead
+        $query = Blog::query();
 
         $status = $this->getQuery('status');
         if ($status && in_array($status, ['draft', 'published', 'archived'])) {

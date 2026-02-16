@@ -16,7 +16,7 @@ export default function TimingList() {
   const fetchItems = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await client.get('/timings');
+      const res = await client.get('/temple-timings');
       setItems(res.data.data);
     } catch { toast.error('Failed to load timings'); }
     finally { setLoading(false); }
@@ -26,7 +26,7 @@ export default function TimingList() {
 
   const handleDelete = async () => {
     try {
-      await client.delete(`/timings/${deleteId}`);
+      await client.delete(`/temple-timings/${deleteId}`);
       toast.success('Timing deleted');
       setDeleteId(null);
       fetchItems();
@@ -36,7 +36,7 @@ export default function TimingList() {
   const handleSaved = () => { setShowForm(false); setEditItem(null); fetchItems(); };
 
   const columns = [
-    { key: 'pooja_name', label: 'Pooja / Event', render: (v) => <strong>{v}</strong> },
+    { key: 'title', label: 'Pooja / Event', render: (v) => <strong>{v}</strong> },
     { key: 'day_type', label: 'Day', width: '120px', render: (v) => (v || '').replace(/_/g, ' ') },
     { key: 'start_time', label: 'Start', width: '100px' },
     { key: 'end_time', label: 'End', width: '100px' },

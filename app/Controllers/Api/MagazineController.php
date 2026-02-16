@@ -89,8 +89,8 @@ class MagazineController extends Controller
         $data = $this->getJsonBody();
 
         $v = new Validator($data, [
-            'title'          => 'required|string|min:5|max:255',
-            'content'        => 'required|string|min:10',
+            'title'          => 'required|string|min:3|max:255',
+            'content'        => 'nullable|string|max:5000',
             'excerpt'        => 'nullable|string|max:500',
             'featured_image' => 'nullable|string|max:255',
             'issue_number'   => 'nullable|string|max:50',
@@ -111,7 +111,7 @@ class MagazineController extends Controller
         $mag = Magazine::create([
             'title'          => $data['title'],
             'slug'           => $slug,
-            'content'        => $data['content'],
+            'content'        => $data['content'] ?? '',
             'excerpt'        => $data['excerpt'] ?? null,
             'featured_image' => $data['featured_image'] ?? null,
             'issue_number'   => $data['issue_number'] ?? null,

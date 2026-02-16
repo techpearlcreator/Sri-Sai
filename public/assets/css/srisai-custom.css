@@ -49,6 +49,8 @@ body {
     color: var(--color-text);
     background: var(--color-white);
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
 }
 
 h1,
@@ -86,7 +88,7 @@ img {
     left: 0;
     right: 0;
     z-index: 1000;
-    transition: background 0.3s ease;
+
 }
 
 .site-header.scrolled {
@@ -105,8 +107,10 @@ img {
 }
 
 .site-logo img {
-    height: 40px;
+    height: auto;
+    max-height: 95px;
     width: auto;
+    max-width: 135px;
     display: block;
 }
 
@@ -138,7 +142,7 @@ img {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--color-accent);
+    background: var(--color-white);
     transition: width 0.3s ease;
 }
 
@@ -181,23 +185,30 @@ img {
     box-shadow: 0 6px 15px rgba(95, 44, 112, 0.3);
 }
 
-/* Mobile Menu Toggle (Hamburger) */
+/* Mobile Menu Toggle (Hamburger) - Hidden on desktop, visible on mobile */
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 5px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
 }
 
 .mobile-menu-toggle span {
     display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--color-white);
+    width: 22px;
+    height: 3px;
+    background: #FFFFFF;
+    border-radius: 2px;
     transition: var(--transition-base);
+    flex-shrink: 0;
 }
 
 /* Mobile Overlay */
@@ -473,6 +484,8 @@ img {
     max-width: var(--container-max);
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
+    overflow: hidden;
 }
 
 .section-header {
@@ -571,6 +584,436 @@ img {
     color: var(--color-secondary);
 }
 
+/* ========== Icon Services with Hover Effects ========== */
+
+/* Column Layout */
+.trx_addons_columns_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.trx_addons_column-1_4 {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding: 0 15px;
+}
+
+/* Icon Grid Base */
+.sc_icons_columns_wrap {
+    position: relative;
+    overflow: hidden;
+    margin-left: 0;
+    margin-right: 0;
+    border: 1px solid rgba(95, 44, 112, 0.1);
+}
+
+.sc_icons_columns_wrap>[class*="trx_addons_column-"] {
+    padding: 0 !important;
+    position: relative;
+}
+
+.sc_icons_columns_wrap>[class*="trx_addons_column-"]:before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: -1px;
+    right: 0;
+    bottom: 0;
+    left: -1px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-color: rgba(95, 44, 112, 0.1);
+}
+
+/* Icon Item Base */
+.sc_icons_qw-stylish .sc_icons_item {
+    position: relative;
+    z-index: 1;
+    padding: 6.2em 3em 5em;
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+    will-change: background-color;
+    text-align: center;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sc_icons_qw-stylish .sc_icons_item.sc_icons_item_linked.with_more .sc_icons_item_link {
+    z-index: 10 !important;
+}
+
+/* Shine Effect */
+.sc_icons_qw-stylish .sc_icons_item .sc_icons_item_shine {
+    border-radius: inherit;
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.sc_icons_qw-stylish .sc_icons_item .sc_icons_item_shine:before {
+    content: '';
+    width: 150%;
+    padding-bottom: 150%;
+    border-radius: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 55%;
+    filter: blur(35px);
+    opacity: .1;
+    transform: translateX(-50%);
+    background-image: conic-gradient(from 205deg at 50% 50%,
+            rgba(0, 0, 0, 0) 0deg,
+            var(--color-primary-light) 25deg,
+            rgba(95, 44, 112, 0.2) 295deg,
+            rgba(0, 0, 0, 0) 360deg);
+}
+
+/* Background Container */
+.sc_icons_qw-stylish .sc_icons_item .sc_icons_item_background {
+    border-radius: inherit;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    -webkit-mask-image: radial-gradient(circle at 60% 5%, black 0%, black 15%, transparent 60%);
+    mask-image: radial-gradient(circle at 60% 5%, black 0%, black 15%, transparent 60%);
+}
+
+/* Animated Tiles */
+.sc_icons_qw-stylish .sc_icons_item .sc_icons_item_background .sc_icons_item_tiles {
+    opacity: 0;
+    transition: opacity .25s;
+}
+
+.sc_icons_qw-stylish .sc_icons_item .sc_icons_item_background .sc_icons_item_tiles .sc_icons_item_tile {
+    position: absolute;
+    background-color: rgba(95, 44, 112, 0.07);
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    opacity: 0;
+}
+
+/* Tile Animation Delays */
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-4,
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-6,
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-10 {
+    animation-delay: -2s;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-3,
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-5,
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-8 {
+    animation-delay: -4s;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-2,
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-9 {
+    animation-delay: -6s;
+}
+
+/* Tile Positions */
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-1 {
+    top: 0;
+    left: 0;
+    height: 10%;
+    width: 22.5%;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-2 {
+    top: 0;
+    left: 22.5%;
+    height: 10%;
+    width: 27.5%;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-3 {
+    top: 0;
+    left: 50%;
+    height: 10%;
+    width: 27.5%;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-4 {
+    top: 0;
+    left: 77.5%;
+    height: 10%;
+    width: 22.5%;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-5 {
+    top: 10%;
+    left: 0;
+    height: 8%;
+    width: 22.5%;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-6 {
+    top: 10%;
+    left: 22.5%;
+    height: 8%;
+    width: 27.5%;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-7 {
+    top: 10%;
+    left: 50%;
+    height: 8%;
+    width: 27.5%;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-8 {
+    top: 10%;
+    left: 77.5%;
+    height: 8%;
+    width: 22.5%;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-9 {
+    top: 18%;
+    left: 0;
+    height: 8%;
+    width: 49.5%;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_tile.sc_icons_item_tile-10 {
+    top: 18%;
+    left: 49.5%;
+    height: 8%;
+    width: 50.5%;
+}
+
+/* Animated Lines */
+.sc_icons_qw-stylish .sc_icons_item .sc_icons_item_background .sc_icons_item_line {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.sc_icons_qw-stylish .sc_icons_item .sc_icons_item_background .sc_icons_item_line:before,
+.sc_icons_qw-stylish .sc_icons_item .sc_icons_item_background .sc_icons_item_line:after {
+    content: '';
+    position: absolute;
+    background-color: rgba(95, 44, 112, 0.15);
+    transition-duration: .3s;
+    transition-timing-function: ease;
+}
+
+.sc_icons_qw-stylish .sc_icons_item .sc_icons_item_background .sc_icons_item_line:before {
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.sc_icons_qw-stylish .sc_icons_item .sc_icons_item_background .sc_icons_item_line:after {
+    transform: scaleY(0);
+    transform-origin: top;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_line.sc_icons_item_line-1:before {
+    top: 0;
+    height: 1px;
+    left: 0;
+    right: 22.5%;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_line.sc_icons_item_line-1:after {
+    left: 0;
+    width: 1px;
+    top: 0;
+    bottom: 74%;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_line.sc_icons_item_line-2:before {
+    top: 10%;
+    height: 1px;
+    left: 22.5%;
+    right: 0;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_line.sc_icons_item_line-2:after {
+    left: 77.5%;
+    width: 1px;
+    top: 10%;
+    bottom: 64%;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_line.sc_icons_item_line-3:before {
+    top: 18%;
+    height: 1px;
+    left: 0;
+    right: 22.5%;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_line.sc_icons_item_line-3:after {
+    left: 49.5%;
+    width: 1px;
+    top: 18%;
+    bottom: 56%;
+}
+
+/* Icon Styling */
+.sc_icons_qw-stylish .sc_icons_icon {
+    position: relative;
+    z-index: 2;
+    font-size: 80px;
+    color: var(--color-primary-light);
+    transition: transform 0.3s ease;
+}
+
+.sc_icons_qw-stylish .sc_icons_icon span {
+    display: inline-block;
+}
+
+/* Icon Details */
+.sc_icons_qw-stylish .sc_icons_icon+.sc_icons_item_details {
+    margin-top: 2.8em;
+    position: relative;
+    z-index: 2;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    margin-bottom: 0.8em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.sc_icons_qw-stylish .sc_icons_item_description {
+    font-size: 16px;
+    color: var(--color-text);
+    line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* More Link (Circular Arrow) */
+.sc_icons_qw-stylish .sc_icons_item .sc_icons_item_more_link {
+    margin-top: 1em;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-primary-light);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.sc_icons_qw-stylish .sc_icons_item .sc_icons_item_more_link .link_text {
+    transition: color 0.3s;
+}
+
+.sc_icons_qw-stylish .sc_icons_item .sc_icons_item_more_link .link_icon {
+    width: 25px;
+    height: 25px;
+    line-height: 23px;
+    border: 1px solid var(--color-text-dark);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.sc_icons_qw-stylish .sc_icons_item .sc_icons_item_more_link .link_icon:before {
+    content: '\2192';
+    font-size: 12px;
+    color: var(--color-text-dark);
+    transition: color 0.3s;
+}
+
+/* HOVER STATES */
+.sc_icons_qw-stylish .sc_icons_item:hover {
+    background-color: rgba(250, 245, 252, 0.8);
+}
+
+.sc_icons_qw-stylish .sc_icons_item:hover .sc_icons_item_shine {
+    opacity: 1;
+}
+
+.sc_icons_qw-stylish .sc_icons_item:hover .sc_icons_item_tiles {
+    opacity: 1;
+    transition-delay: .25s;
+}
+
+.sc_icons_qw-stylish .sc_icons_item:hover .sc_icons_item_tile {
+    animation-name: tile;
+}
+
+.sc_icons_qw-stylish .sc_icons_item:hover .sc_icons_item_line {
+    opacity: 1;
+}
+
+.sc_icons_qw-stylish .sc_icons_item:hover .sc_icons_item_line:before {
+    transform: scaleX(1);
+}
+
+.sc_icons_qw-stylish .sc_icons_item:hover .sc_icons_item_line:after {
+    transform: scaleY(1);
+}
+
+.sc_icons_qw-stylish .sc_icons_item:hover .sc_icons_item_line.sc_icons_item_line-1:before,
+.sc_icons_qw-stylish .sc_icons_item:hover .sc_icons_item_line.sc_icons_item_line-1:after {
+    transition-delay: .0s;
+}
+
+.sc_icons_qw-stylish .sc_icons_item:hover .sc_icons_item_line.sc_icons_item_line-2:before,
+.sc_icons_qw-stylish .sc_icons_item:hover .sc_icons_item_line.sc_icons_item_line-2:after {
+    transition-delay: .15s;
+}
+
+.sc_icons_qw-stylish .sc_icons_item:hover .sc_icons_item_line.sc_icons_item_line-3:before,
+.sc_icons_qw-stylish .sc_icons_item:hover .sc_icons_item_line.sc_icons_item_line-3:after {
+    transition-delay: .3s;
+}
+
+.sc_icons_qw-stylish .sc_icons_item:hover .sc_icons_icon {
+    transform: scale(1.1);
+}
+
+.sc_icons_qw-stylish .sc_icons_item:hover .sc_icons_item_more_link {
+    gap: 15px;
+}
+
+.sc_icons_qw-stylish .sc_icons_item:hover .sc_icons_item_more_link .link_icon {
+    border-color: var(--color-primary-light);
+    background-color: var(--color-primary-light);
+}
+
+.sc_icons_qw-stylish .sc_icons_item:hover .sc_icons_item_more_link .link_icon:before {
+    color: #fff;
+}
+
+/* Tile Animation Keyframes */
+@keyframes tile {
+
+    0%,
+    12.5%,
+    100% {
+        opacity: 1;
+    }
+
+    25%,
+    82.5% {
+        opacity: 0;
+    }
+}
+
 /* ========== About Section ========== */
 .about-grid {
     display: grid;
@@ -612,36 +1055,74 @@ img {
 
 /* ========== Statistics Section ========== */
 .stats-section {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-    color: var(--color-white);
+    background: #f8f7f5;
+    color: var(--color-text);
+    padding: 100px 0;
 }
 
+/* GRID */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 60px;
+    gap: 0;
     text-align: center;
 }
 
+/* ITEM */
 .stat-item {
-    padding: 20px;
+    padding: 60px 20px;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    /* vertical center */
+    justify-content: center;
+    /* horizontal center */
+    text-align: center;
 }
 
-.stat-number {
+
+/* Vertical divider */
+.stat-item+.stat-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 65%;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+/* BIG FADED NUMBER — CENTERED BEHIND */
+.stat-bg-number {
     font-family: var(--font-heading);
-    font-size: 72px;
-    font-weight: 700;
-    color: var(--color-white);
-    margin-bottom: 10px;
+    font-size: 140px;
+    font-weight: 800;
     line-height: 1;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: rgba(0, 0, 0, 0.06);
+    /* faded effect */
+    z-index: 0;
+    pointer-events: none;
 }
 
+/* LABEL TEXT — CENTERED ON TOP OF NUMBER */
 .stat-label {
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--color-text);
+    position: relative;
+    z-index: 1;
 }
+
+
 
 /* ========== CTA Section ========== */
 .bg-primary {
@@ -679,7 +1160,6 @@ img {
 
 .video-overlay {
     position: absolute;
-    height: auto;
     inset: 0;
     background: rgba(29, 4, 39, 0.6);
     z-index: 1;
@@ -787,6 +1267,64 @@ img {
     object-fit: cover;
     display: block;
     border-radius: var(--radius);
+}
+
+/* ========== Prayer Card Animations ========== */
+/* Slide-in from left (prayer card) — appears second */
+.prayer-slide-left {
+    opacity: 0;
+    transform: translateX(-60px);
+}
+
+.prayer-slide-left.visible {
+    animation: slideFromLeft 0.8s ease forwards, floatCard 3.5s ease-in-out 1.5s infinite;
+}
+
+/* Slide-in from right (visit card) — appears first */
+.prayer-slide-right {
+    opacity: 0;
+    transform: translateX(60px);
+}
+
+.prayer-slide-right.visible {
+    animation: slideFromRight 0.8s ease forwards, floatCard 3.5s ease-in-out 1.2s infinite;
+}
+
+@keyframes slideFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Floating effect — continuous subtle bob */
+@keyframes floatCard {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
 }
 
 /* ========== Donation Form ========== */
@@ -1192,7 +1730,7 @@ img {
 /* ========== Page Header (inner pages) ========== */
 .srisai-page-header {
     background: var(--color-primary);
-    padding: 50px 0 40px;
+    padding: 120px 0 40px;
     text-align: center;
 }
 
@@ -1976,14 +2514,76 @@ img {
 }
 
 /* ========== Responsive ========== */
+
+/* Desktop 4-Column Grid Borders */
+@media (min-width: 1280px) {
+    .sc_icons_columns_wrap {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .trx_addons_column-1_4 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+
+    .sc_icons_columns_wrap>[class*="trx_addons_column-"] {
+        min-height: 420px;
+    }
+
+    /* Remove right border on every 4th item */
+    .sc_icons_columns_wrap>[class*="trx_addons_column-"]:nth-child(4n):before {
+        border-right: none !important;
+    }
+
+    /* Add bottom border only on items that aren't in the last row */
+    .sc_icons_columns_wrap>[class*="trx_addons_column-"]:before {
+        border-bottom: 1px solid rgba(95, 44, 112, 0.1);
+    }
+}
+
+/* Large Tablets & Small Desktops (1280px - 1439px) */
+@media (max-width: 1439px) {
+    .header-container {
+        padding: 18px 30px;
+    }
+
+    .site-logo img {
+        max-height: 85px;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_item {
+        padding: 5em 2em 4em;
+        min-height: 400px;
+    }
+}
+
+/* Tablets (1024px - 1279px) */
 @media (max-width: 1279px) {
+    :root {
+        --container-max: 1100px;
+        --spacing-sm: 35px;
+        --spacing-md: 50px;
+        --spacing-lg: 70px;
+    }
+
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
     }
 
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
+        gap: 0;
+    }
+
+    .stat-bg-number {
+        font-size: 100px;
+    }
+
+    /* Hide vertical dividers on 2-col, add for 3rd item */
+    .stat-item:nth-child(3)::before {
+        display: none;
     }
 
     .hero-title {
@@ -2017,15 +2617,66 @@ img {
     .srisai-temples-grid {
         grid-template-columns: 1fr;
     }
+
+    .trx_addons_column-1_4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_item {
+        padding: 4em 1.5em 3em;
+        min-height: 350px;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_icon {
+        font-size: 64px;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_item_title {
+        font-size: 19px;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_item_description {
+        font-size: 15px;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+
+    /* Fix 2-column border grid */
+    .sc_icons_columns_wrap>[class*="trx_addons_column-"]:nth-child(odd):before {
+        border-right: 1px solid rgba(95, 44, 112, 0.1);
+    }
+
+    .sc_icons_columns_wrap>[class*="trx_addons_column-"]:nth-child(1),
+    .sc_icons_columns_wrap>[class*="trx_addons_column-"]:nth-child(2) {
+        border-top: 1px solid rgba(95, 44, 112, 0.1);
+    }
 }
 
+/* Tablets & Medium Devices (768px - 1023px) */
 @media (max-width: 1023px) {
+    :root {
+        --container-max: 960px;
+        --spacing-xs: 18px;
+        --spacing-sm: 30px;
+        --spacing-md: 45px;
+        --spacing-lg: 60px;
+    }
+
     .hero-section {
         height: 100vh;
+        min-height: 500px;
     }
 
     .hero-title {
         font-size: 32px;
+        margin-bottom: 30px;
+    }
+
+    .hero-tagline {
+        font-size: 17px;
     }
 
     .hero-slider-button-prev,
@@ -2033,12 +2684,24 @@ img {
         display: none;
     }
 
+    /* Mobile Navigation */
     .main-navigation {
         display: none;
     }
 
     .mobile-menu-toggle {
-        display: flex;
+        display: flex !important;
+    }
+
+    /* Better touch targets for mobile */
+    .btn {
+        padding: 12px 35px;
+        font-size: 13px;
+        min-height: 44px; /* iOS recommended touch target */
+    }
+
+    .btn-donate {
+        padding: 10px 25px;
     }
 
     .about-grid {
@@ -2057,98 +2720,387 @@ img {
 
     .srisai-contact-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
 
     .srisai-services-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-}
 
-@media (max-width: 767px) {
-    .header-container {
-        padding: 15px 20px;
+    .trx_addons_column-1_4 {
+        flex: 0 0 50%;
+        max-width: 50%;
     }
 
-    .hero-section {
-        height: 100vh;
+    /* Icon grid adjustments for tablet */
+    .sc_icons_qw-stylish .sc_icons_item {
+        min-height: 360px;
     }
 
-    .hero-title {
-        font-size: 28px;
+    .sc_icons_columns_wrap>[class*="trx_addons_column-"]:nth-child(odd):before {
+        border-right: 1px solid rgba(95, 44, 112, 0.1);
     }
 
-    .hero-tagline {
-        font-size: 16px;
-    }
-
-    .hero-content {
-        padding: 0 20px;
-    }
-
-    .services-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .blog-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .section-title {
-        font-size: 32px;
+    .sc_icons_columns_wrap>[class*="trx_addons_column-"]:nth-child(1),
+    .sc_icons_columns_wrap>[class*="trx_addons_column-"]:nth-child(2) {
+        border-top: 1px solid rgba(95, 44, 112, 0.1);
     }
 
     .section {
-        padding: 50px 0;
+        padding: 55px 0;
+    }
+
+    .section-header {
+        margin-bottom: 45px;
+    }
+
+    .donation-form {
+        padding: 30px 25px;
+    }
+
+    .contact-form-card {
+        padding: 40px 30px;
+    }
+}
+
+/* Mobile Devices (up to 767px) */
+@media (max-width: 767px) {
+    :root {
+        --container-max: 100%;
+        --spacing-xs: 15px;
+        --spacing-sm: 25px;
+        --spacing-md: 35px;
+        --spacing-lg: 50px;
+    }
+
+    /* Header */
+    .header-container {
+        padding: 12px 18px;
+    }
+
+    .site-logo img {
+        max-height: 60px;
+        max-width: 100px;
+    }
+
+    .btn-donate {
+        padding: 8px 18px;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+
+    /* Hero */
+    .hero-section {
+        height: 100vh;
+        min-height: 480px;
+    }
+
+    .hero-title {
+        font-size: 26px;
+        margin-bottom: 25px;
+        line-height: 1.3;
+    }
+
+    .hero-tagline {
+        font-size: 14px;
+        letter-spacing: 1.5px;
+        margin-bottom: 15px;
+    }
+
+    .hero-content {
+        padding: 0 18px;
+        max-width: 100%;
+    }
+
+    .hero-slider-pagination {
+        bottom: 30px;
+    }
+
+    /* Sections */
+    .section {
+        padding: 40px 0;
+    }
+
+    .section-container {
+        padding: 0 18px;
+    }
+
+    .section-header {
+        margin-bottom: 35px;
+    }
+
+    .section-title {
+        font-size: 28px;
+        line-height: 1.3;
+    }
+
+    .section-subtitle {
+        font-size: 13px;
+        letter-spacing: 1.5px;
+    }
+
+    .section-description {
+        font-size: 15px;
+    }
+
+    /* Service Grid */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .service-item {
+        padding: 25px 15px;
+    }
+
+    .service-icon {
+        font-size: 52px;
+        margin-bottom: 18px;
+    }
+
+    .service-title {
+        font-size: 18px;
+    }
+
+    /* Icon Services */
+    .trx_addons_column-1_4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_item {
+        padding: 3em 1.5em 2.5em;
+        min-height: 320px;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_icon {
+        font-size: 56px;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_item_title {
+        font-size: 18px;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_item_description {
+        font-size: 15px;
+    }
+
+    /* Fix border grid on mobile */
+    .sc_icons_columns_wrap {
+        border: none !important;
+    }
+
+    .sc_icons_columns_wrap>[class*="trx_addons_column-"] {
+        border: 1px solid rgba(95, 44, 112, 0.1);
+        border-bottom: none;
+    }
+
+    .sc_icons_columns_wrap>[class*="trx_addons_column-"]:last-child {
+        border-bottom: 1px solid rgba(95, 44, 112, 0.1);
+    }
+
+    .sc_icons_columns_wrap>[class*="trx_addons_column-"]:before {
+        display: none;
+    }
+
+    /* Stats */
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .stat-item {
+        padding: 40px 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .stat-item:last-child {
+        border-bottom: none;
+    }
+
+    .stat-item + .stat-item::before {
+        display: none;
+    }
+
+    .stat-bg-number {
+        font-size: 70px;
+    }
+
+    .stat-label {
+        font-size: 20px;
+    }
+
+    /* Blog Grid */
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .blog-card-image {
+        height: 220px;
+    }
+
+    .blog-card-body {
+        padding: 20px;
+    }
+
+    .blog-card-title {
+        font-size: 17px;
+    }
+
+    /* Events */
+    .event-card-inner {
+        flex-direction: column;
+        padding: 18px;
+    }
+
+    .event-date {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .event-day {
+        font-size: 28px;
+    }
+
+    .event-thumb {
+        width: 100%;
+        height: 180px;
+    }
+
+    .events-header-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Donation Form */
+    .donation-form {
+        padding: 25px 20px;
     }
 
     .donation-amounts {
         flex-direction: column;
+        gap: 12px;
     }
 
     .amount-btn {
         width: 100%;
+        min-height: 48px;
     }
 
+    .donation-personal-info {
+        padding: 20px;
+    }
+
+    /* Forms */
     .form-row-group {
         grid-template-columns: 1fr;
+        gap: 12px;
     }
 
+    .form-row input,
+    .form-row textarea,
+    .form-row select {
+        padding: 14px; /* Larger touch targets */
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+
+    /* Contact */
+    .contact-form-card {
+        padding: 30px 20px;
+    }
+
+    .contact-form .form-row input,
+    .contact-form .form-row textarea {
+        font-size: 16px;
+    }
+
+    /* CTA */
     .cta-row {
         flex-direction: column;
+        gap: 25px;
         text-align: center;
     }
 
-    .event-card-inner {
-        flex-direction: column;
+    .bg-primary h3 {
+        font-size: 24px;
     }
 
-    .events-header-row {
-        gap: 20px;
-    }
-
+    /* Mobile Menu */
     .mobile-menu {
         width: 100%;
+        max-width: 100%;
     }
 
+    .mobile-nav a {
+        padding: 14px 20px;
+        font-size: 17px;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Footer */
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 30px;
     }
 
+    .footer-main {
+        padding: 40px 0 25px;
+    }
+
+    .footer-title {
+        font-size: 24px;
+    }
+
     .footer-bottom-inner {
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
         text-align: center;
     }
 
+    .footer-bottom-nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Inner Pages */
+    .srisai-page-header {
+        padding: 100px 0 30px;
+    }
+
+    .srisai-page-header h1 {
+        font-size: 26px;
+    }
+
+    .srisai-page-header p {
+        font-size: 15px;
+    }
+
+    .srisai-section {
+        padding: 40px 0;
+    }
+
+    .srisai-container {
+        padding: 0 18px;
+    }
+
+    .srisai-section__title {
+        font-size: 26px;
+    }
+
+    .srisai-section__desc {
+        font-size: 15px;
+    }
+
+    /* Grids */
     .srisai-blog-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .srisai-events-grid {
@@ -2157,34 +3109,206 @@ img {
 
     .srisai-gallery-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .srisai-magazine-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        gap: 25px;
     }
 
     .srisai-trustees-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 
-    .srisai-page-header h1 {
-        font-size: 28px;
+    .srisai-image-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
     }
 
-    .srisai-section__title {
-        font-size: 28px;
-    }
-
-    .srisai-section {
-        padding: 45px 0;
-    }
-
+    /* Article */
     .srisai-article__header h1 {
-        font-size: 26px;
+        font-size: 24px;
+        line-height: 1.3;
+    }
+
+    .srisai-article__content {
+        font-size: 15px;
+    }
+
+    .srisai-article__content h2 {
+        font-size: 22px;
+    }
+
+    .srisai-article__content h3 {
+        font-size: 19px;
+    }
+
+    /* Scroll to Top */
+    .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    /* Error Pages */
+    .srisai-error {
+        padding: 60px 20px;
+    }
+
+    .srisai-error__code {
+        font-size: 80px;
+    }
+
+    .srisai-error__title {
+        font-size: 24px;
+    }
+
+    .srisai-error__desc {
+        font-size: 15px;
     }
 }
 
+/* Small Mobile Devices (up to 480px) */
 @media (max-width: 480px) {
+    :root {
+        --spacing-xs: 12px;
+        --spacing-sm: 20px;
+        --spacing-md: 30px;
+        --spacing-lg: 40px;
+    }
+
+    /* Header */
+    .header-container {
+        padding: 10px 15px;
+        gap: 12px;
+    }
+
+    .site-logo img {
+        max-height: 50px;
+        max-width: 85px;
+    }
+
+    .btn-donate {
+        padding: 7px 15px;
+        font-size: 11px;
+    }
+
+    /* Hero */
+    .hero-section {
+        height: 100vh;
+        min-height: 450px;
+    }
+
+    .hero-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .hero-tagline {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+
+    .hero-content {
+        padding: 0 15px;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 11px 28px;
+        font-size: 12px;
+        letter-spacing: 1.5px;
+    }
+
+    .btn-sm {
+        padding: 8px 18px;
+        font-size: 11px;
+    }
+
+    /* Sections */
+    .section {
+        padding: 35px 0;
+    }
+
+    .section-container {
+        padding: 0 15px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    .section-subtitle {
+        font-size: 12px;
+    }
+
+    .section-description {
+        font-size: 14px;
+    }
+
+    /* Service Items */
+    .service-item {
+        padding: 20px 12px;
+    }
+
+    .service-icon {
+        font-size: 48px;
+    }
+
+    .service-title {
+        font-size: 17px;
+    }
+
+    .service-description {
+        font-size: 14px;
+    }
+
+    /* Icon Services */
+    .sc_icons_qw-stylish .sc_icons_item {
+        padding: 2.5em 1em 2em;
+        min-height: 280px;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_icon {
+        font-size: 48px;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_item_title {
+        font-size: 17px;
+        margin-bottom: 0.6em;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_item_description {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_item_more_link {
+        margin-top: 0.8em;
+    }
+
+    /* Stats */
+    .stats-section {
+        padding: 60px 0;
+    }
+
+    .stat-item {
+        padding: 35px 15px;
+    }
+
+    .stat-bg-number {
+        font-size: 60px;
+    }
+
+    .stat-label {
+        font-size: 18px;
+    }
+
+    /* Grids - All single column */
     .srisai-magazine-grid {
         grid-template-columns: 1fr;
     }
@@ -2193,12 +3317,826 @@ img {
         grid-template-columns: 1fr;
     }
 
-    .stat-number {
+    .srisai-donation-methods {
+        grid-template-columns: 1fr;
+    }
+
+    .srisai-temples-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Blog Cards */
+    .blog-card-image {
+        height: 200px;
+    }
+
+    .blog-card-body {
+        padding: 18px;
+    }
+
+    .blog-card-title {
+        font-size: 16px;
+    }
+
+    /* Events */
+    .event-card-inner {
+        padding: 15px;
+    }
+
+    .event-day {
+        font-size: 24px;
+    }
+
+    .event-month {
+        font-size: 12px;
+    }
+
+    .event-info h4 {
+        font-size: 17px;
+    }
+
+    /* Donation Form */
+    .donation-form {
+        padding: 20px 15px;
+    }
+
+    .amount-btn {
+        padding: 12px 18px;
+        font-size: 15px;
+    }
+
+    .donation-total-amount {
+        font-size: 22px;
+    }
+
+    /* Contact Form */
+    .contact-form-card {
+        padding: 25px 18px;
+    }
+
+    .srisai-form-group label {
+        font-size: 13px;
+    }
+
+    /* Prayer Cards */
+    .prayer-card,
+    .visit-card {
+        padding: 25px 18px;
+    }
+
+    .prayer-card-title,
+    .visit-card-title {
+        font-size: 20px;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-inner {
+        padding: 15px;
+    }
+
+    .mobile-nav a {
+        padding: 12px 18px;
+        font-size: 16px;
+    }
+
+    /* Footer */
+    .footer-main {
+        padding: 35px 0 20px;
+    }
+
+    .footer-title {
+        font-size: 22px;
+    }
+
+    .footer-heading {
+        font-size: 15px;
+    }
+
+    .footer-text {
+        font-size: 14px;
+    }
+
+    /* Inner Pages */
+    .srisai-page-header {
+        padding: 90px 0 25px;
+    }
+
+    .srisai-page-header h1 {
+        font-size: 23px;
+    }
+
+    .srisai-section {
+        padding: 35px 0;
+    }
+
+    .srisai-section__title {
+        font-size: 23px;
+    }
+
+    .srisai-about-content {
+        font-size: 15px;
+    }
+
+    /* Article */
+    .srisai-article__header h1 {
+        font-size: 22px;
+    }
+
+    .srisai-article__content {
+        font-size: 15px;
+    }
+
+    .srisai-article__content h2 {
+        font-size: 20px;
+    }
+
+    .srisai-article__content h3 {
+        font-size: 18px;
+    }
+
+    /* Gallery */
+    .srisai-image-grid img {
+        height: 180px;
+    }
+
+    /* Magazine Cards */
+    .srisai-magazine-card__cover img,
+    .srisai-magazine-card__cover--placeholder {
+        height: 260px;
+    }
+
+    /* Trustee Cards */
+    .srisai-trustee-card {
+        padding: 20px 12px;
+    }
+
+    .srisai-trustee-card__photo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .srisai-trustee-card h4 {
+        font-size: 15px;
+    }
+
+    .srisai-trustee-card__role {
+        font-size: 12px;
+    }
+
+    /* Contact Items */
+    .srisai-contact-item {
+        gap: 12px;
+    }
+
+    .srisai-contact-item__icon {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    /* Pagination */
+    .srisai-pagination {
+        gap: 10px;
+        margin-top: 30px;
+    }
+
+    /* Scroll to Top */
+    .scroll-to-top {
+        bottom: 15px;
+        right: 15px;
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+
+    /* Error Pages */
+    .srisai-error {
+        padding: 50px 15px;
+    }
+
+    .srisai-error__code {
+        font-size: 70px;
+    }
+
+    .srisai-error__title {
+        font-size: 22px;
+    }
+}
+
+/* Extra Small Mobile Devices (320px - 435px) - Specific fixes for tiny screens */
+@media (max-width: 435px) {
+
+    :root {
+        --spacing-xs: 10px;
+        --spacing-sm: 15px;
+        --spacing-md: 20px;
+        --spacing-lg: 30px;
+    }
+
+    /* ========== HEADER FIXES ========== */
+    .header-container {
+        padding: 8px 12px !important;
+        gap: 8px !important;
+    }
+
+    /* Logo - Much smaller for tiny screens */
+    .site-logo {
+        flex-shrink: 0;
+        max-width: 80px;
+    }
+
+    .site-logo img {
+        max-height: 40px !important;
+        max-width: 70px !important;
+        width: auto !important;
+        height: auto !important;
+    }
+
+    /* Header Actions */
+    .header-actions {
+        gap: 8px !important;
+        flex-shrink: 0;
+    }
+
+    /* Donate Button - Smaller */
+    .btn-donate {
+        padding: 6px 12px !important;
+        font-size: 10px !important;
+        letter-spacing: 0.3px !important;
+        white-space: nowrap;
+        min-width: auto !important;
+    }
+
+    /* Mobile Menu Toggle - Must be visible */
+    .mobile-menu-toggle {
+        display: flex !important;
+        width: 36px !important;
+        height: 36px !important;
+        padding: 6px !important;
+        flex-shrink: 0 !important;
+        background: rgba(255, 255, 255, 0.15) !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 6px !important;
+    }
+
+    .mobile-menu-toggle span {
+        display: block !important;
+        width: 20px !important;
+        height: 3px !important;
+        background: #FFFFFF !important;
+        margin: 0 !important;
+    }
+
+    /* ========== BUTTONS & FORMS FIXES ========== */
+    /* All Buttons */
+    .btn {
+        padding: 10px 20px !important;
+        font-size: 11px !important;
+        letter-spacing: 1px !important;
+        white-space: normal !important;
+        line-height: 1.3 !important;
+        min-height: 44px !important; /* Touch-friendly */
+    }
+
+    .btn-sm {
+        padding: 8px 15px !important;
+        font-size: 10px !important;
+        min-height: 38px !important;
+    }
+
+    /* Form Inputs */
+    .form-row input,
+    .form-row textarea,
+    .form-row select,
+    .srisai-form-group input,
+    .srisai-form-group textarea,
+    .srisai-form-group select {
+        padding: 12px 10px !important;
+        font-size: 16px !important; /* Prevent iOS zoom */
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .form-row textarea,
+    .srisai-form-group textarea {
+        min-height: 100px !important;
+    }
+
+    /* Form Labels */
+    .form-row label,
+    .srisai-form-group label {
+        font-size: 12px !important;
+        margin-bottom: 6px !important;
+    }
+
+    /* Donation Amount Buttons */
+    .amount-btn {
+        padding: 10px 12px !important;
+        font-size: 14px !important;
+        min-height: 44px !important;
+        white-space: nowrap !important;
+    }
+
+    .donation-amounts {
+        gap: 10px !important;
+    }
+
+    /* Submit Buttons */
+    button[type="submit"],
+    input[type="submit"],
+    .btn-primary {
+        width: 100% !important;
+        padding: 12px 20px !important;
+        font-size: 12px !important;
+        min-height: 48px !important;
+    }
+
+    /* ========== CONTENT SPACING ========== */
+    .section-container {
+        padding: 0 12px !important;
+    }
+
+    .section {
+        padding: 30px 0 !important;
+    }
+
+    .hero-content {
+        padding: 0 12px !important;
+    }
+
+    /* ========== TYPOGRAPHY ========== */
+    .hero-title {
+        font-size: 20px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 15px !important;
+    }
+
+    .hero-tagline {
+        font-size: 11px !important;
+        letter-spacing: 1px !important;
+    }
+
+    .section-title {
+        font-size: 22px !important;
+        line-height: 1.25 !important;
+        word-wrap: break-word !important;
+    }
+
+    .section-subtitle {
+        font-size: 11px !important;
+    }
+
+    .section-description {
+        font-size: 13px !important;
+        line-height: 1.6 !important;
+    }
+
+    /* ========== CARDS & GRIDS ========== */
+    .blog-card-body,
+    .event-card-inner,
+    .service-item {
+        padding: 15px 12px !important;
+    }
+
+    .blog-card-title {
+        font-size: 15px !important;
+        line-height: 1.3 !important;
+    }
+
+    .service-title {
+        font-size: 16px !important;
+    }
+
+    .service-icon {
+        font-size: 42px !important;
+        margin-bottom: 12px !important;
+    }
+
+    /* Icon Services */
+    .sc_icons_qw-stylish .sc_icons_item {
+        padding: 2em 0.8em 1.8em !important;
+        min-height: 260px !important;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_icon {
+        font-size: 42px !important;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_item_title {
+        font-size: 16px !important;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_item_description {
+        font-size: 13px !important;
+    }
+
+    /* ========== MOBILE MENU ========== */
+    .mobile-menu {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .mobile-menu-inner {
+        padding: 12px !important;
+    }
+
+    .mobile-nav a {
+        padding: 12px 15px !important;
+        font-size: 15px !important;
+        min-height: 44px !important;
+    }
+
+    .mobile-menu-header {
+        padding: 12px !important;
+    }
+
+    .mobile-menu-close {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 20px !important;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer-main {
+        padding: 30px 0 20px !important;
+    }
+
+    .footer-grid {
+        gap: 25px !important;
+    }
+
+    .footer-title {
+        font-size: 20px !important;
+    }
+
+    .footer-heading {
+        font-size: 14px !important;
+    }
+
+    .footer-text,
+    .footer-link-arrow {
+        font-size: 13px !important;
+    }
+
+    .footer-bottom {
+        padding: 12px 0 !important;
+    }
+
+    .footer-copyright {
+        font-size: 12px !important;
+    }
+
+    /* ========== PAGE HEADERS ========== */
+    .srisai-page-header {
+        padding: 75px 0 20px !important;
+    }
+
+    .srisai-page-header h1 {
+        font-size: 20px !important;
+        line-height: 1.3 !important;
+        word-wrap: break-word !important;
+    }
+
+    .srisai-page-header p {
+        font-size: 13px !important;
+    }
+
+    /* ========== FORMS - SPECIFIC PAGES ========== */
+    .contact-form-card {
+        padding: 20px 12px !important;
+    }
+
+    .donation-form {
+        padding: 18px 12px !important;
+    }
+
+    .donation-personal-info {
+        padding: 18px 12px !important;
+    }
+
+    .donation-total-amount {
+        font-size: 20px !important;
+    }
+
+    /* ========== TABLES (if any) ========== */
+    table {
+        font-size: 12px !important;
+    }
+
+    table th,
+    table td {
+        padding: 8px 6px !important;
+    }
+
+    /* ========== IMAGES ========== */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    .blog-card-image {
+        height: 180px !important;
+    }
+
+    .event-thumb {
+        height: 160px !important;
+    }
+
+    .srisai-image-grid img {
+        height: 160px !important;
+    }
+
+    /* ========== STATS ========== */
+    .stats-section {
+        padding: 50px 0 !important;
+    }
+
+    .stat-item {
+        padding: 30px 12px !important;
+    }
+
+    .stat-bg-number {
+        font-size: 50px !important;
+    }
+
+    .stat-label {
+        font-size: 16px !important;
+    }
+
+    /* ========== CTA ========== */
+    .bg-primary h3 {
+        font-size: 20px !important;
+        line-height: 1.3 !important;
+    }
+
+    .cta-row {
+        padding: 25px 12px !important;
+    }
+
+    /* ========== PRAYER/VISIT CARDS ========== */
+    .prayer-card,
+    .visit-card {
+        padding: 20px 12px !important;
+    }
+
+    .prayer-card-title,
+    .visit-card-title {
+        font-size: 18px !important;
+    }
+
+    .prayer-card-desc,
+    .visit-card-desc {
+        font-size: 13px !important;
+    }
+
+    .prayer-times-list li {
+        padding: 10px 0 !important;
+        font-size: 13px !important;
+    }
+
+    /* ========== MAGAZINE & TRUSTEE CARDS ========== */
+    .srisai-magazine-card {
+        margin-bottom: 20px !important;
+    }
+
+    .srisai-magazine-card__cover img {
+        height: 240px !important;
+    }
+
+    .srisai-magazine-card__title {
+        font-size: 16px !important;
+    }
+
+    .srisai-trustee-card {
+        padding: 18px 10px !important;
+    }
+
+    .srisai-trustee-card__photo {
+        width: 90px !important;
+        height: 90px !important;
+    }
+
+    .srisai-trustee-card h4 {
+        font-size: 14px !important;
+    }
+
+    .srisai-trustee-card__role {
+        font-size: 11px !important;
+    }
+
+    /* ========== PAGINATION ========== */
+    .srisai-pagination {
+        gap: 6px !important;
+        flex-wrap: wrap !important;
+    }
+
+    .srisai-pagination a,
+    .srisai-pagination span {
+        min-width: 36px !important;
+        height: 36px !important;
+        font-size: 13px !important;
+        padding: 8px !important;
+    }
+
+    /* ========== SCROLL TO TOP ========== */
+    .scroll-to-top {
+        bottom: 12px !important;
+        right: 12px !important;
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 14px !important;
+    }
+
+    /* ========== ERROR PAGES ========== */
+    .srisai-error {
+        padding: 40px 12px !important;
+    }
+
+    .srisai-error__code {
+        font-size: 60px !important;
+    }
+
+    .srisai-error__title {
+        font-size: 20px !important;
+    }
+
+    .srisai-error__desc {
+        font-size: 13px !important;
+    }
+
+    /* ========== ARTICLE CONTENT ========== */
+    .srisai-article__header h1 {
+        font-size: 20px !important;
+        line-height: 1.3 !important;
+    }
+
+    .srisai-article__content {
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+    }
+
+    .srisai-article__content h2 {
+        font-size: 18px !important;
+    }
+
+    .srisai-article__content h3 {
+        font-size: 16px !important;
+    }
+
+    .srisai-article__content h4 {
+        font-size: 15px !important;
+    }
+
+    /* ========== PREVENT OVERFLOW ========== */
+    .container,
+    .section-container,
+    .hero-content {
+        max-width: 100% !important;
+    }
+
+    /* Text wrapping */
+    h1, h2, h3, h4, h5, h6, p {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+
+    /* ========== MOBILE MENU - Ensure it works ========== */
+    .mobile-menu {
+        position: fixed !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100vh !important;
+        z-index: 9999 !important;
+        transform: translateX(100%) !important;
+    }
+
+    .mobile-menu.active {
+        transform: translateX(0) !important;
+    }
+
+    .mobile-overlay {
+        position: fixed !important;
+        z-index: 9998 !important;
+    }
+
+    .mobile-overlay.active {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+}
+
+/* Mobile Landscape Orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section {
+        height: auto;
+        min-height: 100vh;
+        padding: 80px 0 40px;
+    }
+
+    .hero-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .hero-tagline {
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+
+    .srisai-page-header {
+        padding: 80px 0 25px;
+    }
+
+    .mobile-menu {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Ultra-Wide Screens (1920px+) */
+@media (min-width: 1920px) {
+    :root {
+        --container-max: 1600px;
+    }
+
+    .hero-title {
+        font-size: 54px;
+    }
+
+    .section-title {
         font-size: 48px;
     }
 
-    .hero-section {
-        height: 100vh;
+    .sc_icons_qw-stylish .sc_icons_icon {
+        font-size: 90px;
+    }
+
+    .stat-bg-number {
+        font-size: 160px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .site-header,
+    .mobile-menu,
+    .mobile-overlay,
+    .hero-slider-button-prev,
+    .hero-slider-button-next,
+    .scroll-to-top,
+    .btn-donate,
+    .site-footer {
+        display: none !important;
+    }
+
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+        background: #fff;
+    }
+
+    a {
+        text-decoration: underline;
+        color: #000;
+    }
+
+    .section {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100%;
+        page-break-inside: avoid;
+    }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .hero-title,
+    .hero-tagline {
+        animation: none !important;
+    }
+
+    .sc_icons_qw-stylish .sc_icons_item_tile {
+        animation: none !important;
+    }
+
+    .prayer-slide-left,
+    .prayer-slide-right {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
     }
 }
 
@@ -2300,6 +4238,27 @@ img {
     font-size: 14px;
     color: rgba(255, 255, 255, 0.5);
     margin: 0;
+}
+
+/* ========== Touch Device Enhancements ========== */
+.touch-device .btn,
+.touch-device .amount-btn {
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(95, 44, 112, 0.2);
+}
+
+.touch-active {
+    opacity: 0.8;
+    transform: scale(0.98);
+}
+
+/* Reduce motion for accessibility */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
 }
 
 /* ========== Utility Classes ========== */

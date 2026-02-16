@@ -16,8 +16,8 @@ export default function GalleryImages({ album, onBack }) {
   const fetchImages = async () => {
     setLoading(true);
     try {
-      const res = await client.get(`/gallery/albums/${album.id}/images`);
-      setImages(res.data.data);
+      const res = await client.get(`/gallery/${album.id}`);
+      setImages(res.data.data?.images || []);
     } catch { toast.error('Failed to load images'); }
     finally { setLoading(false); }
   };
@@ -33,14 +33,9 @@ export default function GalleryImages({ album, onBack }) {
       try {
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('module', 'gallery');
-        const uploadRes = await client.post('/media/upload', formData, {
+        formData.append('caption', file.name.replace(/\.[^.]+$/, ''));
+        await client.post(`/gallery/${album.id}/images`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
-        });
-        const path = uploadRes.data.data.file_path;
-        await client.post(`/gallery/albums/${album.id}/images`, {
-          image_path: path,
-          caption: file.name.replace(/\.[^.]+$/, ''),
         });
         uploaded++;
       } catch { toast.error(`Failed to upload ${file.name}`); }
@@ -85,7 +80,7 @@ export default function GalleryImages({ album, onBack }) {
         <div className="gallery-grid">
           {images.map((img) => (
             <div key={img.id} className="gallery-grid__item">
-              <img src={`${storageBase}${img.image_path}`} alt={img.caption || ''} />
+              <img src={`${storageBase}${img.file_path}`} alt={img.caption || ''} />
               <div className="gallery-grid__overlay">
                 <span className="gallery-grid__caption">{img.caption || ''}</span>
                 <button className="gallery-grid__delete" onClick={() => setDeleteId(img.id)} title="Delete">

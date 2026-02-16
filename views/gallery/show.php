@@ -21,8 +21,8 @@
         <?php else: ?>
             <div class="srisai-image-grid">
                 <?php foreach ($images as $image): ?>
-                    <a href="<?= $assetUrl ?>/uploads/<?= htmlspecialchars($image->image_path) ?>" class="gallery-item" data-lightbox="album-<?= $album->id ?>">
-                        <img src="<?= $assetUrl ?>/uploads/<?= htmlspecialchars($image->image_path) ?>" alt="<?= htmlspecialchars($image->caption ?? $album->title) ?>">
+                    <a href="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($image->file_path) ?>" class="gallery-item" data-lightbox="album-<?= $album->id ?>">
+                        <img src="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($image->file_path) ?>" alt="<?= htmlspecialchars($image->caption ?? $album->title) ?>">
                     </a>
                 <?php endforeach; ?>
             </div>

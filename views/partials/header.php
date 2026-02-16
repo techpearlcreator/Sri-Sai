@@ -2,7 +2,7 @@
     <div class="header-container">
         <!-- Logo -->
         <a href="<?= $baseUrl ?>/" class="site-logo">
-            <img src="<?= $assetUrl ?>/images/logo.png" srcset="<?= $assetUrl ?>/images/logo-retina.png 2x" alt="Sri Sai Mission" width="97" height="40">
+            <img src="<?= $assetUrl ?>/images/logo.png?v=4" srcset="<?= $assetUrl ?>/images/logo-retina.png?v=4 2x" alt="Sri Sai Mission" width="115" height="72">
         </a>
 
         <!-- Desktop Navigation -->
@@ -35,7 +35,7 @@
     <div class="mobile-menu-inner">
         <div class="mobile-menu-header">
             <a href="<?= $baseUrl ?>/" class="site-logo">
-                <img src="<?= $assetUrl ?>/images/logo.png" srcset="<?= $assetUrl ?>/images/logo-retina.png 2x" alt="Sri Sai Mission" width="97" height="40">
+                <img src="<?= $assetUrl ?>/images/logo.png?v=4" srcset="<?= $assetUrl ?>/images/logo-retina.png?v=4 2x" alt="Sri Sai Mission" width="95" height="60">
             </a>
             <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">&times;</button>
         </div>

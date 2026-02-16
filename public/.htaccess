@@ -4,9 +4,6 @@ RewriteEngine On
 RewriteCond %{HTTP:Authorization} .+
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-# Serve uploaded files from storage directory
-RewriteRule ^storage/uploads/(.*)$ ../storage/uploads/$1 [L]
-
 # Redirect everything to index.php except existing files/directories
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

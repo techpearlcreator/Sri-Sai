@@ -25,7 +25,7 @@ export default function GalleryList() {
     try {
       const params = { page, per_page: 15 };
       if (search) params.search = search;
-      const res = await client.get('/gallery/albums', { params });
+      const res = await client.get('/gallery', { params });
       setAlbums(res.data.data);
       setPagination(res.data.meta);
     } catch { toast.error('Failed to load albums'); }
@@ -36,7 +36,7 @@ export default function GalleryList() {
 
   const handleDelete = async () => {
     try {
-      await client.delete(`/gallery/albums/${deleteId}`);
+      await client.delete(`/gallery/${deleteId}`);
       toast.success('Album deleted');
       setDeleteId(null);
       fetchAlbums();

@@ -19,7 +19,7 @@
                     <div class="srisai-trustee-card">
                         <div class="srisai-trustee-card__photo">
                             <?php if (!empty($trustee->photo)): ?>
-                                <img src="<?= $assetUrl ?>/uploads/<?= htmlspecialchars($trustee->photo) ?>" alt="<?= htmlspecialchars($trustee->name) ?>">
+                                <img src="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($trustee->photo) ?>" alt="<?= htmlspecialchars($trustee->name) ?>">
                             <?php else: ?>
                                 <div class="srisai-trustee-card__photo--placeholder">
                                     <span><?= substr(htmlspecialchars($trustee->name), 0, 1) ?></span>
@@ -50,7 +50,7 @@
                     <div class="srisai-trustee-card">
                         <div class="srisai-trustee-card__photo">
                             <?php if (!empty($trustee->photo)): ?>
-                                <img src="<?= $assetUrl ?>/uploads/<?= htmlspecialchars($trustee->photo) ?>" alt="<?= htmlspecialchars($trustee->name) ?>">
+                                <img src="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($trustee->photo) ?>" alt="<?= htmlspecialchars($trustee->name) ?>">
                             <?php else: ?>
                                 <div class="srisai-trustee-card__photo--placeholder">
                                     <span><?= substr(htmlspecialchars($trustee->name), 0, 1) ?></span>

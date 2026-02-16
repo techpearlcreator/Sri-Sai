@@ -13,14 +13,14 @@
             <div class="srisai-magazine-grid">
                 <?php foreach ($magazines as $mag): ?>
                 <a href="<?= $baseUrl ?>/magazine/<?= htmlspecialchars($mag->slug) ?>" class="srisai-magazine-card">
-                    <?php if (!empty($mag->cover_image)): ?>
-                    <div class="srisai-magazine-card__cover"><img src="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($mag->cover_image) ?>" alt="<?= htmlspecialchars($mag->title) ?>"></div>
+                    <?php if (!empty($mag->featured_image)): ?>
+                    <div class="srisai-magazine-card__cover"><img src="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($mag->featured_image) ?>" alt="<?= htmlspecialchars($mag->title) ?>"></div>
                     <?php else: ?>
                     <div class="srisai-magazine-card__cover srisai-magazine-card__cover--placeholder"><span>Issue <?= htmlspecialchars($mag->issue_number ?? '') ?></span></div>
                     <?php endif; ?>
                     <div class="srisai-magazine-card__info">
                         <h4><?= htmlspecialchars($mag->title) ?></h4>
-                        <p><?= htmlspecialchars(($mag->issue_month ?? '') . ' ' . ($mag->issue_year ?? '')) ?></p>
+                        <p><?= !empty($mag->issue_date) ? date('F Y', strtotime($mag->issue_date)) : '' ?></p>
                     </div>
                 </a>
                 <?php endforeach; ?>

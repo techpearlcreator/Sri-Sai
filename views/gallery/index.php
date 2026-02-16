@@ -19,7 +19,7 @@
                     <a href="<?= $baseUrl ?>/gallery/<?= htmlspecialchars($album->slug) ?>" class="srisai-gallery-card">
                         <div class="srisai-gallery-card__image">
                             <?php if (!empty($album->cover_image)): ?>
-                                <img src="<?= $assetUrl ?>/uploads/<?= htmlspecialchars($album->cover_image) ?>" alt="<?= htmlspecialchars($album->title) ?>">
+                                <img src="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($album->cover_image) ?>" alt="<?= htmlspecialchars($album->title) ?>">
                             <?php else: ?>
                                 <div class="srisai-gallery-card__image--placeholder">No Image</div>
                             <?php endif; ?>
@@ -32,14 +32,14 @@
                 <?php endforeach; ?>
             </div>
 
-            <?php if ($total > $perPage): ?>
+            <?php if (!empty($pagination) && $pagination['total_pages'] > 1): ?>
                 <div class="srisai-pagination">
-                    <?php if ($page > 1): ?>
-                        <a href="?page=<?= $page - 1 ?>" class="srisai-btn srisai-btn--outline srisai-btn--sm">← Previous</a>
+                    <?php if ($pagination['page'] > 1): ?>
+                        <a href="?page=<?= $pagination['page'] - 1 ?>" class="srisai-btn srisai-btn--outline srisai-btn--sm">&laquo; Previous</a>
                     <?php endif; ?>
-                    <span class="srisai-pagination__info">Page <?= $page ?> of <?= ceil($total / $perPage) ?></span>
-                    <?php if ($page < ceil($total / $perPage)): ?>
-                        <a href="?page=<?= $page + 1 ?>" class="srisai-btn srisai-btn--outline srisai-btn--sm">Next →</a>
+                    <span class="srisai-pagination__info">Page <?= $pagination['page'] ?> of <?= $pagination['total_pages'] ?></span>
+                    <?php if ($pagination['page'] < $pagination['total_pages']): ?>
+                        <a href="?page=<?= $pagination['page'] + 1 ?>" class="srisai-btn srisai-btn--outline srisai-btn--sm">Next &raquo;</a>
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
