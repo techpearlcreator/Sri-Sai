@@ -2789,6 +2789,14 @@ img {
         letter-spacing: 0.5px;
     }
 
+    /* Hide extra header buttons on mobile — all are accessible inside the mobile menu */
+    .btn-lang-toggle,
+    .btn-login,
+    .btn-user,
+    .btn-user-logout {
+        display: none !important;
+    }
+
     /* Hero */
     .hero-section {
         height: 100vh;
@@ -3192,9 +3200,9 @@ img {
         max-width: 85px;
     }
 
+    /* Hide donate button at ≤480px — only Logo + Hamburger needed; menu has Donations link */
     .btn-donate {
-        padding: 7px 15px;
-        font-size: 11px;
+        display: none !important;
     }
 
     /* Hero */
