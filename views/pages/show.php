@@ -1,7 +1,7 @@
 <!-- Page Header -->
 <div class="srisai-page-header">
     <div class="srisai-container">
-        <h1><?= htmlspecialchars($page->title) ?></h1>
+        <h1><?= htmlspecialchars(langField($page, 'title')) ?></h1>
     </div>
 </div>
 
@@ -12,12 +12,12 @@
             <article class="srisai-article">
                 <?php if (!empty($page->featured_image)): ?>
                     <div class="srisai-article__image">
-                        <img src="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($page->featured_image) ?>" alt="<?= htmlspecialchars($page->title) ?>">
+                        <img src="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($page->featured_image) ?>" alt="<?= htmlspecialchars(langField($page, 'title')) ?>">
                     </div>
                 <?php endif; ?>
 
                 <div class="srisai-article__content">
-                    <?= $page->content ?? '' ?>
+                    <?= langField($page, 'content') ?? '' ?>
                 </div>
             </article>
         </div>

@@ -77,6 +77,9 @@ class BlogController extends Controller
             'slug'           => $blog->slug,
             'excerpt'        => $blog->excerpt,
             'content'        => $blog->content,
+            'title_ta'       => $blog->title_ta,
+            'excerpt_ta'     => $blog->excerpt_ta,
+            'content_ta'     => $blog->content_ta,
             'featured_image' => $blog->featured_image,
             'status'         => $blog->status,
             'is_featured'    => (bool) $blog->is_featured,
@@ -121,6 +124,9 @@ class BlogController extends Controller
             'slug'           => $slug,
             'content'        => $data['content'],
             'excerpt'        => $data['excerpt'] ?? null,
+            'title_ta'       => $data['title_ta'] ?? null,
+            'excerpt_ta'     => $data['excerpt_ta'] ?? null,
+            'content_ta'     => $data['content_ta'] ?? null,
             'featured_image' => $data['featured_image'] ?? null,
             'category_id'    => $data['category_id'] ?? null,
             'created_by'     => (int) $user->id,
@@ -166,7 +172,7 @@ class BlogController extends Controller
         }
 
         $updateData = [];
-        foreach (['title', 'content', 'excerpt', 'featured_image', 'category_id', 'status', 'is_featured'] as $field) {
+        foreach (['title', 'title_ta', 'content', 'content_ta', 'excerpt', 'excerpt_ta', 'featured_image', 'category_id', 'status', 'is_featured'] as $field) {
             if (array_key_exists($field, $data)) {
                 $updateData[$field] = $data[$field];
             }

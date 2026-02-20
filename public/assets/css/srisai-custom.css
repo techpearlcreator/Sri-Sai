@@ -4297,3 +4297,889 @@ img {
 .pb-0 {
     padding-bottom: 0;
 }
+
+/* =====================================================
+   NEW PAGES: Auth, Shop, Tours
+   ===================================================== */
+
+/* ========== Auth Pages ========== */
+/* ========== Shared Form Row (2-col grid) ========== */
+.srisai-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 575px) {
+    .srisai-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== Auth Pages ========== */
+.srisai-auth-wrap {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.srisai-auth-form {
+    background: var(--color-white);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.srisai-auth-form h3 {
+    color: var(--color-primary);
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+}
+
+.srisai-auth-subtitle {
+    color: var(--color-text);
+    margin-bottom: 24px;
+}
+
+.srisai-auth-footer {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--color-text);
+}
+
+.srisai-auth-footer a {
+    color: var(--color-primary-light);
+    font-weight: 600;
+}
+
+.srisai-btn--full {
+    width: 100%;
+}
+
+/* ========== Language Toggle Button ========== */
+.btn-lang-toggle {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: var(--transition-base);
+    font-family: var(--font-heading);
+}
+
+.btn-lang-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ========== Header Login/User Buttons ========== */
+.btn-login {
+    display: inline-block;
+    padding: 6px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-white);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+
+.btn-login:hover {
+    background: rgba(255,255,255,0.15);
+    color: var(--color-white);
+}
+
+.btn-user {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-white);
+    background: rgba(255,255,255,0.15);
+    border-radius: 6px;
+    text-decoration: none;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.btn-user:hover {
+    background: rgba(255,255,255,0.25);
+    color: var(--color-white);
+}
+
+.btn-user-logout {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+}
+
+.btn-user-logout:hover {
+    color: var(--color-white);
+}
+
+/* ========== Profile Page ========== */
+.srisai-profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.srisai-bookings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.srisai-booking-card {
+    background: var(--color-white);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    border-left: 4px solid var(--color-primary-light);
+}
+
+.srisai-booking-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.srisai-booking-card__header h4 {
+    margin: 0;
+    color: var(--color-primary);
+}
+
+.srisai-booking-card__details p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: var(--color-text);
+}
+
+/* ========== Badges ========== */
+.srisai-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.srisai-badge--success, .srisai-badge--paid {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.srisai-badge--pending, .srisai-badge--upcoming {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.srisai-badge--muted, .srisai-badge--completed, .srisai-badge--cancelled {
+    background: #f5f5f5;
+    color: #757575;
+}
+
+.srisai-badge--failed {
+    background: #fce4ec;
+    color: #c62828;
+}
+
+.srisai-badge--ongoing {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+/* ========== Alert styles ========== */
+.alert {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.alert-success {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.alert-error {
+    background: #fce4ec;
+    color: #c62828;
+    border: 1px solid #f8bbd0;
+}
+
+/* ========== Filter Bar ========== */
+.srisai-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.srisai-filter-btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-text-dark);
+    background: var(--color-white);
+    border: 2px solid var(--color-border);
+    transition: var(--transition-base);
+}
+
+.srisai-filter-btn:hover,
+.srisai-filter-btn.active {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+.srisai-filter-btn--highlight {
+    background: var(--color-accent);
+    color: var(--color-white);
+    border-color: var(--color-accent);
+}
+
+.srisai-filter-btn--highlight:hover {
+    background: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+}
+
+/* ========== Shop Grid ========== */
+.srisai-shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.srisai-product-card {
+    background: var(--color-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: var(--transition-base);
+}
+
+.srisai-product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.srisai-product-card__image {
+    display: block;
+    height: 200px;
+    overflow: hidden;
+}
+
+.srisai-product-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.srisai-product-card:hover .srisai-product-card__image img {
+    transform: scale(1.05);
+}
+
+.srisai-product-card__placeholder {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-light-bg);
+    font-size: 3rem;
+}
+
+.srisai-product-card__placeholder--large {
+    height: 350px;
+    font-size: 5rem;
+}
+
+.srisai-product-card__body {
+    padding: 16px 20px;
+}
+
+.srisai-product-card__category {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-primary-light);
+    margin-bottom: 6px;
+}
+
+.srisai-product-card__body h4 {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+}
+
+.srisai-product-card__body h4 a {
+    color: var(--color-text-dark);
+    text-decoration: none;
+}
+
+.srisai-product-card__body h4 a:hover {
+    color: var(--color-primary-light);
+}
+
+.srisai-product-card__price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+}
+
+/* ========== Product Detail ========== */
+.srisai-product-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.srisai-product-detail__image img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.srisai-product-detail__info h2 {
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+
+.srisai-product-detail__price {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+
+.srisai-product-detail__desc {
+    margin: 20px 0;
+    color: var(--color-text);
+    line-height: 1.7;
+}
+
+/* ========== Temple Selector ========== */
+.srisai-temple-selector h3 {
+    text-align: center;
+    margin-bottom: 16px;
+    color: var(--color-primary);
+}
+
+.srisai-temple-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.srisai-temple-card {
+    display: block;
+    cursor: pointer;
+}
+
+.srisai-temple-card input[type="radio"] {
+    display: none;
+}
+
+.srisai-temple-card__content {
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid var(--color-border);
+    transition: var(--transition-base);
+}
+
+.srisai-temple-card input:checked + .srisai-temple-card__content {
+    border-color: var(--color-primary);
+    background: rgba(95, 44, 112, 0.05);
+    box-shadow: 0 2px 12px rgba(95, 44, 112, 0.15);
+}
+
+.srisai-temple-card__content h4 {
+    color: var(--color-primary);
+    margin: 0 0 4px;
+    font-size: 1.1rem;
+}
+
+.srisai-temple-card__content p {
+    color: var(--color-text);
+    margin: 0;
+    font-size: 14px;
+}
+
+/* ========== Tours Grid ========== */
+.srisai-tours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.srisai-tour-card {
+    background: var(--color-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: var(--transition-base);
+}
+
+.srisai-tour-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.srisai-tour-card__image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.srisai-tour-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.srisai-tour-card__placeholder {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-light-bg);
+    font-size: 3rem;
+}
+
+.srisai-tour-card__status {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.srisai-tour-card__status--upcoming {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.srisai-tour-card__status--ongoing {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.srisai-tour-card__status--completed,
+.srisai-tour-card__status--cancelled {
+    background: #f5f5f5;
+    color: #757575;
+}
+
+.srisai-tour-card__body {
+    padding: 20px;
+}
+
+.srisai-tour-card__body h4 {
+    margin: 0 0 10px;
+    font-size: 1.15rem;
+}
+
+.srisai-tour-card__body h4 a {
+    color: var(--color-text-dark);
+    text-decoration: none;
+}
+
+.srisai-tour-card__body h4 a:hover {
+    color: var(--color-primary-light);
+}
+
+.srisai-tour-card__meta p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: var(--color-text);
+}
+
+.srisai-tour-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border);
+}
+
+.srisai-tour-card__price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.srisai-tour-card__price small {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--color-text);
+}
+
+/* ========== Tour Detail ========== */
+.srisai-tour-detail {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 40px;
+    align-items: start;
+}
+
+.srisai-tour-detail__image {
+    margin-bottom: 24px;
+}
+
+.srisai-tour-detail__image img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.srisai-tour-detail__info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.srisai-tour-info-item {
+    background: var(--color-light-bg);
+    padding: 16px;
+    border-radius: 10px;
+}
+
+.srisai-tour-info-item strong {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-text);
+    margin-bottom: 4px;
+}
+
+.srisai-tour-info-item span {
+    font-size: 15px;
+    color: var(--color-text-dark);
+    font-weight: 600;
+}
+
+.srisai-tour-detail__desc {
+    color: var(--color-text);
+    line-height: 1.7;
+}
+
+/* ========== Tour Sidebar ========== */
+.srisai-tour-sidebar__card {
+    background: var(--color-white);
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 100px;
+}
+
+.srisai-tour-sidebar__price {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+}
+
+.srisai-tour-sidebar__price small {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-text);
+}
+
+.srisai-tour-sidebar__seats {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: var(--color-text);
+}
+
+.srisai-tour-sidebar__seats-left {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 1.25rem;
+}
+
+.srisai-progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #eee;
+    border-radius: 3px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.srisai-progress-bar__fill {
+    height: 100%;
+    background: var(--color-accent);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.srisai-tour-sidebar__total {
+    font-size: 1.1rem;
+    margin: 16px 0;
+    color: var(--color-text-dark);
+}
+
+.srisai-tour-sidebar__total strong {
+    font-size: 1.3rem;
+    color: var(--color-primary);
+}
+
+.srisai-tour-sidebar__login-prompt,
+.srisai-tour-sidebar__closed {
+    text-align: center;
+    padding: 16px 0;
+    color: var(--color-text);
+}
+
+/* ========== Empty State ========== */
+.srisai-empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--color-text);
+}
+
+.srisai-empty p {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+}
+
+/* ========== Responsive: New Pages ========== */
+@media (max-width: 1023px) {
+    .srisai-product-detail,
+    .srisai-tour-detail {
+        grid-template-columns: 1fr;
+    }
+
+    .srisai-tour-sidebar__card {
+        position: static;
+    }
+
+    .srisai-profile-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 767px) {
+    .srisai-auth-form {
+        padding: 24px 20px;
+    }
+
+    .srisai-shop-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+    }
+
+    .srisai-tours-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .srisai-tour-detail__info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .srisai-filter-bar {
+        gap: 8px;
+    }
+
+    .srisai-filter-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    .btn-user {
+        max-width: 80px;
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+
+    .btn-login {
+        padding: 4px 12px;
+        font-size: 13px;
+    }
+
+    .btn-user-logout {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+}
+
+@media (max-width: 435px) {
+    .srisai-temple-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .srisai-shop-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .srisai-product-card__image {
+        height: 160px;
+    }
+
+    .srisai-tour-card__image {
+        height: 160px;
+    }
+}
+
+/* ============================================================
+   BUTTON DISABLED STATE
+   ============================================================ */
+.srisai-btn:disabled,
+.srisai-btn[disabled] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #b0a7b8 !important;
+    border-color: #b0a7b8 !important;
+    color: #fff !important;
+}
+
+/* ============================================================
+   SHOP ORDER FORM — Delivery + Price Summary
+   ============================================================ */
+
+/* Pincode row: input + button side by side */
+.srisai-form-row--pincode {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+.srisai-form-row--pincode .srisai-form-group:first-child {
+    flex: 1;
+    min-width: 160px;
+}
+
+/* Delivery zone confirmed info box */
+.srisai-delivery-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    font-size: 14px;
+}
+.srisai-delivery-info strong {
+    color: #2e7d32;
+}
+
+/* Order price summary box */
+.srisai-order-summary {
+    background: #f9f6fc;
+    border: 1px solid #e8e2ed;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+}
+.srisai-order-summary__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 14px;
+    color: var(--color-text, #3d3347);
+    border-bottom: 1px solid #f0ecf4;
+}
+.srisai-order-summary__row:last-child {
+    border-bottom: none;
+}
+.srisai-order-summary__total {
+    padding-top: 10px;
+    margin-top: 4px;
+    border-top: 2px solid #5F2C70 !important;
+    font-size: 16px;
+}
+.srisai-order-summary__total strong {
+    color: #5F2C70;
+    font-size: 18px;
+}
+/* ── Delivery Map (Leaflet) ─────────────────────────────────────── */
+.srisai-delivery-map {
+    height: 320px;
+    border-radius: 10px;
+    border: 2px solid #e0d6eb;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+/* Map search box */
+.srisai-map-search {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.srisai-map-search input {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #d5cce0;
+    border-radius: 6px;
+    font-size: 0.875rem;
+}
+.srisai-map-search input:focus {
+    outline: none;
+    border-color: #5F2C70;
+    box-shadow: 0 0 0 2px rgba(95,44,112,0.1);
+}
+
+/* Search result dropdown */
+.srisai-map-results {
+    position: relative;
+    z-index: 1000;
+    background: #fff;
+    border: 1px solid #e0d6eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 0.5rem;
+}
+.srisai-map-result-item {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: #3d3347;
+    border-bottom: 1px solid #f5f2f8;
+    transition: background 0.15s;
+}
+.srisai-map-result-item:last-child { border-bottom: none; }
+.srisai-map-result-item:hover { background: #f9f5fc; }
+
+/* Distance label next to zone badge */
+#deliveryDistanceLabel {
+    font-size: 0.82rem;
+    color: var(--text-light, #724D67);
+    margin-left: 4px;
+}

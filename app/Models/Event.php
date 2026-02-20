@@ -8,8 +8,8 @@ class Event extends Model
 {
     protected static string $table = 'events';
     protected static array $fillable = [
-        'created_by', 'title', 'slug', 'description', 'featured_image',
-        'event_date', 'event_time', 'end_date', 'end_time', 'location',
+        'created_by', 'title', 'title_ta', 'slug', 'description', 'description_ta',
+        'featured_image', 'event_date', 'event_time', 'end_date', 'end_time', 'location',
         'is_recurring', 'recurrence_rule', 'status', 'is_featured',
     ];
 

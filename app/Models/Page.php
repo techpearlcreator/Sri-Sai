@@ -8,7 +8,7 @@ class Page extends Model
 {
     protected static string $table = 'pages';
     protected static array $fillable = [
-        'created_by', 'title', 'slug', 'content', 'featured_image',
+        'created_by', 'title', 'title_ta', 'slug', 'content', 'content_ta', 'featured_image',
         'template', 'status', 'sort_order', 'show_in_menu', 'menu_position', 'parent_id',
     ];
 

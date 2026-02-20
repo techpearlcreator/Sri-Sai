@@ -63,6 +63,8 @@ class EventController extends Controller
             'title'           => $event->title,
             'slug'            => $event->slug,
             'description'     => $event->description,
+            'title_ta'        => $event->title_ta,
+            'description_ta'  => $event->description_ta,
             'featured_image'  => $event->featured_image,
             'event_date'      => $event->event_date,
             'event_time'      => $event->event_time,
@@ -109,6 +111,8 @@ class EventController extends Controller
             'title'           => $data['title'],
             'slug'            => $slug,
             'description'     => $data['description'] ?? null,
+            'title_ta'        => $data['title_ta'] ?? null,
+            'description_ta'  => $data['description_ta'] ?? null,
             'featured_image'  => $data['featured_image'] ?? null,
             'event_date'      => $data['event_date'],
             'event_time'      => $data['event_time'] ?? null,
@@ -136,7 +140,7 @@ class EventController extends Controller
 
         $data = $this->getJsonBody();
         $updateData = [];
-        foreach (['title', 'description', 'featured_image', 'event_date', 'event_time', 'end_date', 'end_time', 'location', 'is_recurring', 'recurrence_rule', 'status', 'is_featured'] as $field) {
+        foreach (['title', 'title_ta', 'description', 'description_ta', 'featured_image', 'event_date', 'event_time', 'end_date', 'end_time', 'location', 'is_recurring', 'recurrence_rule', 'status', 'is_featured'] as $field) {
             if (array_key_exists($field, $data)) {
                 $updateData[$field] = $data[$field];
             }

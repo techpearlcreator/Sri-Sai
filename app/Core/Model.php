@@ -211,12 +211,17 @@ abstract class Model
 
     /**
      * Add a WHERE condition.
+     * Supports table-qualified columns: 'table.column' → `table`.`column`
      */
     public function andWhere(string $column, mixed $operatorOrValue, mixed $value = null): static
     {
+        $quotedCol = str_contains($column, '.')
+            ? implode('.', array_map(fn($p) => "`{$p}`", explode('.', $column, 2)))
+            : "`{$column}`";
+
         if ($value === null) {
             // Two args: column = value
-            $this->wheres[] = "`{$column}` = ?";
+            $this->wheres[] = "{$quotedCol} = ?";
             $this->bindings[] = $operatorOrValue;
         } else {
             // Three args: column operator value
@@ -228,13 +233,13 @@ abstract class Model
             if ($operator === 'IN' || $operator === 'NOT IN') {
                 if (is_array($value) && !empty($value)) {
                     $placeholders = implode(', ', array_fill(0, count($value), '?'));
-                    $this->wheres[] = "`{$column}` {$operator} ({$placeholders})";
+                    $this->wheres[] = "{$quotedCol} {$operator} ({$placeholders})";
                     $this->bindings = array_merge($this->bindings, array_values($value));
                 }
             } elseif ($operator === 'IS' || $operator === 'IS NOT') {
-                $this->wheres[] = "`{$column}` {$operator} NULL";
+                $this->wheres[] = "{$quotedCol} {$operator} NULL";
             } else {
-                $this->wheres[] = "`{$column}` {$operator} ?";
+                $this->wheres[] = "{$quotedCol} {$operator} ?";
                 $this->bindings[] = $value;
             }
         }

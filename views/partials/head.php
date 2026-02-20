@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#1D0427">
 <meta name="format-detection" content="telephone=yes">
 <title><?= htmlspecialchars($pageTitle ?? 'Sri Sai Mission') ?></title>
-<meta name="description" content="<?= htmlspecialchars($pageDescription ?? 'Sri Sai Mission Religious & Charitable Trust - Serving humanity through Annadhanam, Temple Worship, Education & Spiritual Guidance.') ?>">
+<meta name="description" content="<?= htmlspecialchars($pageDescription ?? __('head.description')) ?>">
 
 <!-- Favicon -->
 <link rel="icon" type="image/jpeg" sizes="32x32" href="<?= $assetUrl ?>/images/cropped-favicon-32x32.jpg">

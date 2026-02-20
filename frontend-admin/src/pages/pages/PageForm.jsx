@@ -3,11 +3,12 @@ import client from '../../api/client';
 import toast from 'react-hot-toast';
 import Modal from '../../components/Modal';
 import ImageUploader from '../../components/ImageUploader';
+import TranslateButton from '../../components/TranslateButton';
 
 export default function PageForm({ item, onClose, onSaved }) {
   const [form, setForm] = useState({
-    title: '', content: '', excerpt: '', featured_image: null,
-    parent_id: '', menu_position: 0, status: 'published',
+    title: '', title_ta: '', content: '', content_ta: '', excerpt: '',
+    featured_image: null, parent_id: '', menu_position: 0, status: 'published',
     show_in_menu: true, show_in_footer: false,
   });
   const [pages, setPages] = useState([]);
@@ -23,8 +24,9 @@ export default function PageForm({ item, onClose, onSaved }) {
       client.get(`/pages/${item.id}`).then((res) => {
         const d = res.data.data;
         setForm({
-          title: d.title || '', content: d.content || '', excerpt: d.excerpt || '',
-          featured_image: d.featured_image || null,
+          title: d.title || '', title_ta: d.title_ta || '',
+          content: d.content || '', content_ta: d.content_ta || '',
+          excerpt: d.excerpt || '', featured_image: d.featured_image || null,
           parent_id: d.parent_id || '', menu_position: d.menu_position || 0,
           status: d.status || 'published',
           show_in_menu: !!d.show_in_menu, show_in_footer: !!d.show_in_footer,
@@ -62,7 +64,7 @@ export default function PageForm({ item, onClose, onSaved }) {
     <Modal isOpen onClose={onClose} title={isEdit ? 'Edit Page' : 'New Page'} wide>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Title</label>
+          <label>Title (English)</label>
           <input value={form.title} onChange={(e) => handleChange('title', e.target.value)} required minLength={2} />
         </div>
 
@@ -94,7 +96,7 @@ export default function PageForm({ item, onClose, onSaved }) {
         </div>
 
         <div className="form-group">
-          <label>Content</label>
+          <label>Content (English)</label>
           <textarea rows={10} value={form.content} onChange={(e) => handleChange('content', e.target.value)} required />
         </div>
 
@@ -116,6 +118,25 @@ export default function PageForm({ item, onClose, onSaved }) {
               Show in footer
             </label>
           </div>
+        </div>
+
+        <hr style={{ margin: '1.5rem 0', borderColor: 'var(--border)' }} />
+        <div className="tamil-section-header">
+          <h4>Tamil Content / தமிழ் உள்ளடக்கம்</h4>
+          <TranslateButton fields={[
+            { sourceValue: form.title,   onTranslated: (v) => handleChange('title_ta',   v), label: 'Title' },
+            { sourceValue: form.content, onTranslated: (v) => handleChange('content_ta', v), label: 'Content' },
+          ]} />
+        </div>
+
+        <div className="form-group">
+          <label>Title (Tamil / தலைப்பு)</label>
+          <input value={form.title_ta} onChange={(e) => handleChange('title_ta', e.target.value)} placeholder="தமிழில் தலைப்பு" />
+        </div>
+
+        <div className="form-group">
+          <label>Content (Tamil / உள்ளடக்கம்)</label>
+          <textarea rows={10} value={form.content_ta} onChange={(e) => handleChange('content_ta', e.target.value)} placeholder="தமிழில் உள்ளடக்கம்" />
         </div>
 
         <div className="form-actions">

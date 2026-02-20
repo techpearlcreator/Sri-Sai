@@ -65,13 +65,6 @@ $router->post('/api/v1/events',         App\Controllers\Api\EventController::cla
 $router->put('/api/v1/events/{id}',     App\Controllers\Api\EventController::class, 'update',  ['AuthMiddleware', 'RoleMiddleware:events,update']);
 $router->delete('/api/v1/events/{id}',  App\Controllers\Api\EventController::class, 'destroy', ['AuthMiddleware', 'RoleMiddleware:events,delete']);
 
-// --- Pages ---
-$router->get('/api/v1/pages',          App\Controllers\Api\PageController::class, 'index',   ['AuthMiddleware', 'RoleMiddleware:pages,read']);
-$router->get('/api/v1/pages/{id}',     App\Controllers\Api\PageController::class, 'show',    ['AuthMiddleware', 'RoleMiddleware:pages,read']);
-$router->post('/api/v1/pages',         App\Controllers\Api\PageController::class, 'store',   ['AuthMiddleware', 'RoleMiddleware:pages,create']);
-$router->put('/api/v1/pages/{id}',     App\Controllers\Api\PageController::class, 'update',  ['AuthMiddleware', 'RoleMiddleware:pages,update']);
-$router->delete('/api/v1/pages/{id}',  App\Controllers\Api\PageController::class, 'destroy', ['AuthMiddleware', 'RoleMiddleware:pages,delete']);
-
 // --- Trustees ---
 $router->get('/api/v1/trustees',            App\Controllers\Api\TrusteeController::class, 'index',   ['AuthMiddleware', 'RoleMiddleware:trustees,read']);
 $router->get('/api/v1/trustees/{id}',       App\Controllers\Api\TrusteeController::class, 'show',    ['AuthMiddleware', 'RoleMiddleware:trustees,read']);
@@ -113,3 +106,57 @@ $router->delete('/api/v1/temple-timings/{id}',  App\Controllers\Api\TempleTiming
 // --- SEO Meta ---
 $router->get('/api/v1/seo/{entityType}/{entityId}', App\Controllers\Api\SeoMetaController::class, 'show',   ['AuthMiddleware']);
 $router->put('/api/v1/seo/{entityType}/{entityId}', App\Controllers\Api\SeoMetaController::class, 'upsert', ['AuthMiddleware']);
+
+// --- Products (Shop) ---
+$router->get('/api/v1/products',          App\Controllers\Api\ProductController::class, 'index',   ['AuthMiddleware', 'RoleMiddleware:shop,read']);
+$router->get('/api/v1/products/{id}',     App\Controllers\Api\ProductController::class, 'show',    ['AuthMiddleware', 'RoleMiddleware:shop,read']);
+$router->post('/api/v1/products',         App\Controllers\Api\ProductController::class, 'store',   ['AuthMiddleware', 'RoleMiddleware:shop,create']);
+$router->put('/api/v1/products/{id}',     App\Controllers\Api\ProductController::class, 'update',  ['AuthMiddleware', 'RoleMiddleware:shop,update']);
+$router->delete('/api/v1/products/{id}',  App\Controllers\Api\ProductController::class, 'destroy', ['AuthMiddleware', 'RoleMiddleware:shop,delete']);
+
+// --- Pooja Types ---
+$router->get('/api/v1/pooja-types',              App\Controllers\Api\PoojaTypeController::class, 'index',     ['AuthMiddleware', 'RoleMiddleware:shop,read']);
+$router->get('/api/v1/pooja-types/{id}',         App\Controllers\Api\PoojaTypeController::class, 'show',      ['AuthMiddleware', 'RoleMiddleware:shop,read']);
+$router->post('/api/v1/pooja-types',             App\Controllers\Api\PoojaTypeController::class, 'store',     ['AuthMiddleware', 'RoleMiddleware:shop,create']);
+$router->put('/api/v1/pooja-types/{id}',         App\Controllers\Api\PoojaTypeController::class, 'update',    ['AuthMiddleware', 'RoleMiddleware:shop,update']);
+$router->delete('/api/v1/pooja-types/{id}',      App\Controllers\Api\PoojaTypeController::class, 'destroy',   ['AuthMiddleware', 'RoleMiddleware:shop,delete']);
+
+// --- Pooja Bookings (admin view) ---
+$router->get('/api/v1/pooja-bookings',          App\Controllers\Api\PoojaBookingController::class, 'index',   ['AuthMiddleware', 'RoleMiddleware:shop,read']);
+$router->get('/api/v1/pooja-bookings/{id}',     App\Controllers\Api\PoojaBookingController::class, 'show',    ['AuthMiddleware', 'RoleMiddleware:shop,read']);
+$router->put('/api/v1/pooja-bookings/{id}',     App\Controllers\Api\PoojaBookingController::class, 'update',  ['AuthMiddleware', 'RoleMiddleware:shop,update']);
+$router->delete('/api/v1/pooja-bookings/{id}',  App\Controllers\Api\PoojaBookingController::class, 'destroy', ['AuthMiddleware', 'RoleMiddleware:shop,delete']);
+
+// --- Shop Enquiries (admin view) ---
+$router->get('/api/v1/shop-enquiries',          App\Controllers\Api\ShopEnquiryController::class, 'index',   ['AuthMiddleware', 'RoleMiddleware:shop,read']);
+$router->get('/api/v1/shop-enquiries/{id}',     App\Controllers\Api\ShopEnquiryController::class, 'show',    ['AuthMiddleware', 'RoleMiddleware:shop,read']);
+$router->put('/api/v1/shop-enquiries/{id}',     App\Controllers\Api\ShopEnquiryController::class, 'update',  ['AuthMiddleware', 'RoleMiddleware:shop,update']);
+$router->delete('/api/v1/shop-enquiries/{id}',  App\Controllers\Api\ShopEnquiryController::class, 'destroy', ['AuthMiddleware', 'RoleMiddleware:shop,delete']);
+
+// --- Tours ---
+$router->get('/api/v1/tours',          App\Controllers\Api\TourApiController::class, 'index',   ['AuthMiddleware', 'RoleMiddleware:tours,read']);
+$router->get('/api/v1/tours/{id}',     App\Controllers\Api\TourApiController::class, 'show',    ['AuthMiddleware', 'RoleMiddleware:tours,read']);
+$router->post('/api/v1/tours',         App\Controllers\Api\TourApiController::class, 'store',   ['AuthMiddleware', 'RoleMiddleware:tours,create']);
+$router->put('/api/v1/tours/{id}',     App\Controllers\Api\TourApiController::class, 'update',  ['AuthMiddleware', 'RoleMiddleware:tours,update']);
+$router->delete('/api/v1/tours/{id}',  App\Controllers\Api\TourApiController::class, 'destroy', ['AuthMiddleware', 'RoleMiddleware:tours,delete']);
+
+// --- Tour Bookings (admin view) ---
+$router->get('/api/v1/tour-bookings',          App\Controllers\Api\TourBookingController::class, 'index',   ['AuthMiddleware', 'RoleMiddleware:tours,read']);
+$router->get('/api/v1/tour-bookings/{id}',     App\Controllers\Api\TourBookingController::class, 'show',    ['AuthMiddleware', 'RoleMiddleware:tours,read']);
+$router->put('/api/v1/tour-bookings/{id}',     App\Controllers\Api\TourBookingController::class, 'update',  ['AuthMiddleware', 'RoleMiddleware:tours,update']);
+
+// --- Delivery Zones (admin CRUD + public check) ---
+$router->get('/api/v1/delivery-zones/check',    App\Controllers\Api\DeliveryZoneController::class, 'check');
+$router->get('/api/v1/delivery-zones',          App\Controllers\Api\DeliveryZoneController::class, 'index',   ['AuthMiddleware', 'RoleMiddleware:shop,read']);
+$router->get('/api/v1/delivery-zones/{id}',     App\Controllers\Api\DeliveryZoneController::class, 'show',    ['AuthMiddleware', 'RoleMiddleware:shop,read']);
+$router->post('/api/v1/delivery-zones',         App\Controllers\Api\DeliveryZoneController::class, 'store',   ['AuthMiddleware', 'RoleMiddleware:shop,create']);
+$router->put('/api/v1/delivery-zones/{id}',     App\Controllers\Api\DeliveryZoneController::class, 'update',  ['AuthMiddleware', 'RoleMiddleware:shop,update']);
+$router->delete('/api/v1/delivery-zones/{id}',  App\Controllers\Api\DeliveryZoneController::class, 'destroy', ['AuthMiddleware', 'RoleMiddleware:shop,delete']);
+
+// --- Shop Orders (admin view) ---
+$router->get('/api/v1/shop-orders',          App\Controllers\Api\ShopOrderController::class, 'index',   ['AuthMiddleware', 'RoleMiddleware:shop,read']);
+$router->get('/api/v1/shop-orders/{id}',     App\Controllers\Api\ShopOrderController::class, 'show',    ['AuthMiddleware', 'RoleMiddleware:shop,read']);
+$router->put('/api/v1/shop-orders/{id}',     App\Controllers\Api\ShopOrderController::class, 'update',  ['AuthMiddleware', 'RoleMiddleware:shop,update']);
+
+// --- Translation Proxy (LibreTranslate) ---
+$router->post('/api/v1/translate', App\Controllers\Api\TranslateController::class, 'translate', ['AuthMiddleware']);

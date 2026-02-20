@@ -8,8 +8,9 @@ class Trustee extends Model
 {
     protected static string $table = 'trustees';
     protected static array $fillable = [
-        'name', 'designation', 'trustee_type', 'bio', 'photo',
-        'phone', 'email', 'qualification', 'sort_order', 'is_active',
+        'name', 'name_ta', 'designation', 'designation_ta', 'trustee_type',
+        'bio', 'bio_ta', 'photo', 'phone', 'email', 'qualification',
+        'sort_order', 'is_active',
     ];
 
     /**

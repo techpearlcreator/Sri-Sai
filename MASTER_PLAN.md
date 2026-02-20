@@ -81,7 +81,7 @@ Based on the PDF content and template analysis:
 | Magazine (Sri Sai Dharisanam) | Trust magazine articles | Yes — full CRUD |
 | Gallery | Event/temple photos | Yes — albums + images |
 | Trustees / Team | 14 trustees listed | Yes — full CRUD |
-| Pages (About, Mission, Vision) | PDF content provided | Yes — CMS pages |
+| Pages (About, Mission, Vision) | PDF content provided | No — static PHP files (views/pages/) |
 | Events | Palki Procession, Poojas, special days | Yes — full CRUD |
 | Temple Timings | Daily/weekly schedule | Yes — editable |
 | Donations | Online donation tracking | Yes — forms + records |
@@ -2313,6 +2313,223 @@ UI: Loaders, grid tiles, icons, payment SVGs
 
 ---
 
+---
+
+## APPENDIX C: PROJECT FOLDER STRUCTURE
+
+```
+C:\SriSai\                          ← Git repository root
+│
+├── app/                            ── BACKEND (PHP MVC)
+│   ├── Controllers/
+│   │   ├── Api/                    ── REST API controllers (JSON responses)
+│   │   │   ├── AuthController.php
+│   │   │   ├── BlogController.php
+│   │   │   ├── DeliveryZoneController.php
+│   │   │   ├── EventController.php
+│   │   │   ├── GalleryController.php
+│   │   │   ├── MagazineController.php
+│   │   │   ├── PageController.php
+│   │   │   ├── PoojaBookingController.php
+│   │   │   ├── PoojaTypeController.php
+│   │   │   ├── ProductController.php
+│   │   │   ├── SettingController.php
+│   │   │   ├── ShopEnquiryController.php
+│   │   │   ├── ShopOrderController.php
+│   │   │   ├── TempleTimingController.php
+│   │   │   ├── TourApiController.php
+│   │   │   ├── TourBookingController.php
+│   │   │   ├── TranslateController.php  ← LibreTranslate proxy
+│   │   │   └── TrusteeController.php
+│   │   └── Web/                    ── Public website controllers (HTML responses)
+│   │       ├── BlogController.php
+│   │       ├── ContactController.php
+│   │       ├── DonationController.php
+│   │       ├── EventController.php
+│   │       ├── GalleryController.php
+│   │       ├── HomeController.php
+│   │       ├── MagazineController.php
+│   │       ├── PageController.php      ← Dynamic DB-driven pages (catch-all)
+│   │       ├── PaymentController.php   ← Donation Razorpay
+│   │       ├── ShopController.php      ← Shop + Razorpay + Map delivery
+│   │       ├── StaticPageController.php← Hardcoded pages (About, Mission, Vision)
+│   │       ├── TourController.php
+│   │       ├── TrusteeController.php
+│   │       └── UserAuthController.php
+│   ├── Core/                       ── MVC framework core
+│   │   ├── Controller.php
+│   │   ├── Database.php
+│   │   ├── Model.php               ← QueryBuilder base
+│   │   ├── Middleware.php
+│   │   └── Router.php
+│   ├── Helpers/
+│   │   ├── EnvLoader.php
+│   │   ├── Lang.php                ← Language switcher (EN/TA session)
+│   │   └── Response.php
+│   ├── Middleware/
+│   │   ├── AuthMiddleware.php      ← Admin JWT auth
+│   │   ├── PublicAuthMiddleware.php← Public user session auth
+│   │   └── RoleMiddleware.php
+│   ├── Models/                     ── Database models (one per table)
+│   │   ├── Blog.php
+│   │   ├── DeliveryZone.php        ← Haversine distance zones
+│   │   ├── Event.php
+│   │   ├── GalleryAlbum.php
+│   │   ├── GalleryImage.php
+│   │   ├── Magazine.php
+│   │   ├── Page.php
+│   │   ├── PoojaBooking.php
+│   │   ├── PoojaType.php
+│   │   ├── Product.php
+│   │   ├── PublicUser.php
+│   │   ├── Setting.php
+│   │   ├── ShopEnquiry.php
+│   │   ├── ShopOrder.php
+│   │   ├── TempleTiming.php
+│   │   ├── Tour.php
+│   │   ├── TourBooking.php
+│   │   └── Trustee.php
+│   └── Services/
+│       └── ActivityLogger.php
+│
+├── database/
+│   └── migrations/                 ── SQL migration files (run once in order)
+│       ├── 001_initial_schema.sql
+│       ├── 002_seed_data.sql
+│       ├── 003_*.sql
+│       ├── 004_shop_tours_users.sql
+│       ├── 005_seed_shop_tours.sql
+│       ├── 006_performance_indexes.sql
+│       ├── 007_add_tamil_columns.sql   ← Tamil (_ta) columns for all tables
+│       ├── 008_shop_orders_delivery.sql
+│       ├── 009_map_delivery.sql        ← OpenStreetMap lat/lng delivery zones
+│       └── 010_pooja_booking_payment.sql
+│
+├── frontend-admin/                 ── ADMIN PANEL (React.js SPA)
+│   ├── src/
+│   │   ├── api/
+│   │   │   └── client.js           ← Axios instance (JWT interceptor)
+│   │   ├── components/
+│   │   │   ├── Modal.jsx
+│   │   │   ├── StatusBadge.jsx
+│   │   │   └── TranslateButton.jsx ← Auto EN→TA via LibreTranslate
+│   │   ├── contexts/
+│   │   │   ├── AuthContext.jsx
+│   │   │   └── LangContext.jsx     ← Admin EN/TA language toggle
+│   │   ├── lang/
+│   │   │   ├── en.json             ← Admin panel English strings
+│   │   │   └── ta.json             ← Admin panel Tamil strings
+│   │   ├── layouts/
+│   │   │   └── AdminLayout.jsx     ← Sidebar + top bar
+│   │   └── pages/
+│   │       ├── auth/LoginPage.jsx
+│   │       ├── blogs/              ← BlogList + BlogForm
+│   │       ├── contacts/
+│   │       ├── dashboard/
+│   │       ├── donations/
+│   │       ├── events/             ← EventList + EventForm
+│   │       ├── gallery/            ← GalleryList + GalleryForm
+│   │       ├── magazines/          ← MagazineList + MagazineForm
+│   │       ├── media/
+│   │       ├── settings/
+│   │       ├── shop/               ← ProductList, DeliveryZonePage, ShopOrdersPage,
+│   │       │                          ShopSettingsPage (map picker), PoojaTypes
+│   │       ├── timings/            ← TimingList + TimingForm
+│   │       ├── tours/              ← TourList + TourBookingList
+│   │       └── trustees/           ← TrusteeList + TrusteeForm
+│   ├── package.json
+│   └── vite.config.js
+│
+├── lang/                           ── PUBLIC SITE TRANSLATIONS
+│   ├── en.php                      ← English strings for all public pages
+│   └── ta.php                      ← Tamil strings for all public pages
+│
+├── public/                         ── WEB ROOT (Apache document root)
+│   ├── admin/                      ← Built React SPA (deployed here, git-ignored)
+│   ├── assets/
+│   │   ├── css/
+│   │   │   └── srisai-custom.css   ← Main custom stylesheet
+│   │   ├── images/
+│   │   └── js/
+│   ├── storage → ../storage/       ← Symlink to uploads
+│   └── index.php                   ← Front controller (bootstrap + router)
+│
+├── routes/
+│   ├── api.php                     ── REST API routes (/api/v1/*)
+│   └── web.php                     ── Public website routes
+│
+├── storage/
+│   ├── uploads/                    ← User-uploaded files (git-ignored)
+│   ├── cache/                      ← App cache (git-ignored)
+│   └── logs/                       ← Error logs (git-ignored)
+│
+└── views/                          ── PUBLIC SITE TEMPLATES (PHP)
+    ├── auth/                       ← Login/Register pages
+    ├── blog/                       ← index.php + show.php
+    ├── contact/
+    ├── donations/
+    ├── errors/                     ← 404, 500 pages
+    ├── events/                     ← index.php + show.php
+    ├── gallery/                    ← index.php + show.php
+    ├── home/                       ← index.php (main landing page)
+    ├── layouts/
+    │   └── master.php              ← Main HTML wrapper layout
+    ├── magazine/                   ← index.php + show.php
+    ├── pages/
+    │   ├── about.php               ← Static hardcoded (EN + TA sections)
+    │   ├── mission.php             ← Static hardcoded (EN + TA sections)
+    │   ├── show.php                ← Dynamic DB-driven page renderer
+    │   └── vision.php              ← Static hardcoded (EN + TA sections)
+    ├── partials/
+    │   ├── footer.php
+    │   ├── head.php
+    │   └── header.php
+    ├── shop/                       ← index.php + show.php + pooja-booking.php
+    ├── tours/                      ← index.php + show.php
+    └── trustees/
+```
+
+---
+
+## APPENDIX D: COMPLETED FEATURES LOG
+
+### Phase 8.5 — Bilingual (EN/TA) System ✅
+- **Public lang files:** `lang/en.php` + `lang/ta.php` — translations for all pages
+- **Helper:** `__('key')` for static text, `langField($obj, 'field')` for DB content
+- **Session:** `?lang=ta` sets session, toggle in header persists choice
+- **DB Tamil columns:** All content tables have `_ta` suffix fields (migration 007)
+- **Admin forms:** All 8 CRUD forms have "Tamil Content" section + Auto-Translate button
+- **Auto-translate:** `TranslateButton.jsx` → `POST /api/v1/translate` → LibreTranslate proxy
+
+### Phase 8.6 — Static Pages System ✅
+- **About Us** (`/about-us`, `/about`) → `views/pages/about.php`
+- **Mission** (`/mission`) → `views/pages/mission.php`
+- **Vision** (`/vision`) → `views/pages/vision.php`
+- Pages removed from admin panel — content edited directly in PHP files
+- Each file has clearly marked `<!-- ENGLISH CONTENT -->` and `<!-- TAMIL CONTENT -->` blocks
+
+### Phase 8.7 — Shop + Razorpay + OpenStreetMap Delivery ✅
+- **Payment:** Razorpay checkout (same flow as tour bookings)
+- **Map delivery:** Leaflet.js (OpenStreetMap tiles) on product page
+  - Address search via Nominatim geocoding API (no API key required)
+  - Click/drag pin to set delivery location
+  - Server-side Haversine formula calculates straight-line distance
+- **Distance zones:** Admin-controlled slabs (e.g. 0–5 km = Free, 5–10 km = ₹50)
+- **Shop dispatch origin:** Admin-configurable via map picker (Admin → Shop Location)
+- **DB:** `shop_orders` table with `lat`, `lng`, `distance_km` columns
+- **Admin:** Delivery Zones CRUD + Shop Orders list + Shop Location map picker
+
+### Map/Location Services Summary
+| Service | Provider | API Key Required |
+|---------|----------|-----------------|
+| Map tiles | OpenStreetMap (Leaflet.js) | No |
+| Address search | Nominatim geocoding | No |
+| Distance calc | Haversine formula (PHP, server-side) | No |
+| Payment | Razorpay | Yes (in .env) |
+| Auto-translate | LibreTranslate | Optional (in .env) |
+
+---
+
 **END OF MASTER PLAN**
 
-*This document serves as the single source of truth for the Sri Sai Mission website project. All development work should reference this plan. Updates to the plan should be versioned and communicated to all stakeholders.*
+*This document serves as the single source of truth for the Sri Sai Mission website project. Last updated: 2026-02-20. All development work should reference this plan.*

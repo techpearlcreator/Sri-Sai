@@ -6,7 +6,8 @@ import ImageUploader from '../../components/ImageUploader';
 
 export default function BlogForm({ item, onClose, onSaved }) {
   const [form, setForm] = useState({
-    title: '', content: '', excerpt: '', featured_image: null,
+    title: '', title_ta: '', content: '', content_ta: '',
+    excerpt: '', excerpt_ta: '', featured_image: null,
     category_id: '', status: 'draft', is_featured: false,
   });
   const [categories, setCategories] = useState([]);
@@ -22,7 +23,9 @@ export default function BlogForm({ item, onClose, onSaved }) {
       client.get(`/blogs/${item.id}`).then((res) => {
         const d = res.data.data;
         setForm({
-          title: d.title || '', content: d.content || '', excerpt: d.excerpt || '',
+          title: d.title || '', title_ta: d.title_ta || '',
+          content: d.content || '', content_ta: d.content_ta || '',
+          excerpt: d.excerpt || '', excerpt_ta: d.excerpt_ta || '',
           featured_image: d.featured_image || null,
           category_id: d.category_id || '', status: d.status || 'draft',
           is_featured: d.is_featured || false,
@@ -47,18 +50,13 @@ export default function BlogForm({ item, onClose, onSaved }) {
       }
       onSaved();
     } catch (err) {
-      const msg = err.response?.data?.error?.message || 'Save failed';
-      toast.error(msg);
+      toast.error(err.response?.data?.error?.message || 'Save failed');
     } finally { setSaving(false); }
   };
 
   return (
     <Modal isOpen onClose={onClose} title={isEdit ? 'Edit Blog Post' : 'New Blog Post'} wide>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Title</label>
-          <input value={form.title} onChange={(e) => handleChange('title', e.target.value)} required minLength={5} />
-        </div>
 
         <div className="form-row">
           <div className="form-group">
@@ -78,14 +76,38 @@ export default function BlogForm({ item, onClose, onSaved }) {
           </div>
         </div>
 
-        <div className="form-group">
-          <label>Excerpt</label>
-          <textarea rows={2} value={form.excerpt} onChange={(e) => handleChange('excerpt', e.target.value)} />
-        </div>
+        <div className="bilingual-grid">
+          <div className="bilingual-col">
+            <div className="bilingual-col-header col-en">🇬🇧 English</div>
+            <div className="form-group">
+              <label>Title *</label>
+              <input value={form.title} onChange={(e) => handleChange('title', e.target.value)} required minLength={5} />
+            </div>
+            <div className="form-group">
+              <label>Excerpt</label>
+              <textarea rows={3} value={form.excerpt} onChange={(e) => handleChange('excerpt', e.target.value)} />
+            </div>
+            <div className="form-group">
+              <label>Content *</label>
+              <textarea rows={9} value={form.content} onChange={(e) => handleChange('content', e.target.value)} required minLength={10} />
+            </div>
+          </div>
 
-        <div className="form-group">
-          <label>Content</label>
-          <textarea rows={10} value={form.content} onChange={(e) => handleChange('content', e.target.value)} required minLength={10} />
+          <div className="bilingual-col">
+            <div className="bilingual-col-header col-ta">🇮🇳 தமிழ்</div>
+            <div className="form-group">
+              <label>தலைப்பு (Title)</label>
+              <input value={form.title_ta} onChange={(e) => handleChange('title_ta', e.target.value)} placeholder="தமிழில் தலைப்பு" />
+            </div>
+            <div className="form-group">
+              <label>சுருக்கம் (Excerpt)</label>
+              <textarea rows={3} value={form.excerpt_ta} onChange={(e) => handleChange('excerpt_ta', e.target.value)} placeholder="தமிழில் சுருக்கம்" />
+            </div>
+            <div className="form-group">
+              <label>உள்ளடக்கம் (Content)</label>
+              <textarea rows={9} value={form.content_ta} onChange={(e) => handleChange('content_ta', e.target.value)} placeholder="தமிழில் உள்ளடக்கம்" />
+            </div>
+          </div>
         </div>
 
         <div className="form-group">

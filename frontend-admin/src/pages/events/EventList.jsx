@@ -7,8 +7,10 @@ import SearchBar from '../../components/SearchBar';
 import StatusBadge from '../../components/StatusBadge';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import EventForm from './EventForm';
+import { useLang } from '../../contexts/LangContext';
 
 export default function EventList() {
+  const { t } = useLang();
   const [items, setItems] = useState([]);
   const [pagination, setPagination] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -44,15 +46,15 @@ export default function EventList() {
   const handleSaved = () => { setShowForm(false); setEditItem(null); fetchItems(); };
 
   const columns = [
-    { key: 'title', label: 'Title', render: (v) => <strong>{v}</strong> },
-    { key: 'event_date', label: 'Date', width: '120px', render: (v) => v ? new Date(v).toLocaleDateString() : '—' },
+    { key: 'title', label: t('table.title'), render: (v) => <strong>{v}</strong> },
+    { key: 'event_date', label: t('table.date'), width: '120px', render: (v) => v ? new Date(v).toLocaleDateString() : '—' },
     { key: 'location', label: 'Location', width: '150px' },
-    { key: 'status', label: 'Status', width: '100px', render: (v) => <StatusBadge status={v} /> },
+    { key: 'status', label: t('table.status'), width: '100px', render: (v) => <StatusBadge status={v} /> },
     {
-      key: 'id', label: 'Actions', width: '150px', render: (_, row) => (
+      key: 'id', label: t('table.actions'), width: '150px', render: (_, row) => (
         <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <button className="btn btn-sm btn-outline" onClick={(e) => { e.stopPropagation(); setEditItem(row); setShowForm(true); }}>Edit</button>
-          <button className="btn btn-sm btn-danger" onClick={(e) => { e.stopPropagation(); setDeleteId(row.id); }}>Delete</button>
+          <button className="btn btn-sm btn-outline" onClick={(e) => { e.stopPropagation(); setEditItem(row); setShowForm(true); }}>{t('common.edit')}</button>
+          <button className="btn btn-sm btn-danger" onClick={(e) => { e.stopPropagation(); setDeleteId(row.id); }}>{t('common.delete')}</button>
         </div>
       )
     },
@@ -60,17 +62,17 @@ export default function EventList() {
 
   return (
     <div>
-      <h1 className="page-title">Events</h1>
+      <h1 className="page-title">{t('pages.events')}</h1>
       <div className="page-toolbar">
-        <SearchBar onSearch={(v) => { setSearch(v); setPage(1); }} placeholder="Search events..." />
+        <SearchBar onSearch={(v) => { setSearch(v); setPage(1); }} placeholder={t('btn.search_events')} />
         <div className="page-toolbar__spacer" />
         <button className="btn btn-primary" onClick={() => { setEditItem(null); setShowForm(true); }}>
-          <HiOutlinePlus size={18} /> New Event
+          <HiOutlinePlus size={18} /> {t('btn.new_event')}
         </button>
       </div>
       <DataTable columns={columns} data={items} loading={loading} pagination={pagination} onPageChange={setPage} />
       {showForm && <EventForm item={editItem} onClose={() => { setShowForm(false); setEditItem(null); }} onSaved={handleSaved} />}
-      <ConfirmDialog isOpen={!!deleteId} onClose={() => setDeleteId(null)} onConfirm={handleDelete} message="This event will be permanently deleted." />
+      <ConfirmDialog isOpen={!!deleteId} onClose={() => setDeleteId(null)} onConfirm={handleDelete} message={t('confirm.delete_event')} />
     </div>
   );
 }

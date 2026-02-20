@@ -3,11 +3,13 @@
  * Master Layout — wraps all public pages.
  * Variables available: $__content, $pageTitle, $pageClass, $baseUrl, $assetUrl
  */
-$baseUrl  = '/srisai/public';
-$assetUrl = $baseUrl . '/assets';
+$baseUrl    = '/srisai/public';
+$assetUrl   = $baseUrl . '/assets';
+$currentLang = App\Helpers\Lang::current();
+$htmlLang    = $currentLang === 'ta' ? 'ta' : 'en';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= $htmlLang ?>">
 <head>
 <?php require VIEWS_PATH . '/partials/head.php'; ?>
 </head>

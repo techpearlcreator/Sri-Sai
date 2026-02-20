@@ -1,8 +1,8 @@
 <!-- Page Header -->
 <div class="srisai-page-header">
     <div class="srisai-container">
-        <h1>Gallery</h1>
-        <p>View our photo albums and memories</p>
+        <h1><?= __('gallery.title') ?></h1>
+        <p><?= __('gallery.subtitle') ?></p>
     </div>
 </div>
 
@@ -11,7 +11,7 @@
     <div class="srisai-container">
         <?php if (empty($albums)): ?>
             <div class="srisai-empty">
-                <p>No albums available at this time.</p>
+                <p><?= __('gallery.empty') ?></p>
             </div>
         <?php else: ?>
             <div class="srisai-gallery-grid">
@@ -19,14 +19,14 @@
                     <a href="<?= $baseUrl ?>/gallery/<?= htmlspecialchars($album->slug) ?>" class="srisai-gallery-card">
                         <div class="srisai-gallery-card__image">
                             <?php if (!empty($album->cover_image)): ?>
-                                <img src="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($album->cover_image) ?>" alt="<?= htmlspecialchars($album->title) ?>">
+                                <img src="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($album->cover_image) ?>" alt="<?= htmlspecialchars(langField($album, 'title')) ?>">
                             <?php else: ?>
-                                <div class="srisai-gallery-card__image--placeholder">No Image</div>
+                                <div class="srisai-gallery-card__image--placeholder"><?= __('gallery.no_image') ?></div>
                             <?php endif; ?>
                         </div>
                         <div class="srisai-gallery-card__body">
-                            <h4><?= htmlspecialchars($album->title) ?></h4>
-                            <p><?= htmlspecialchars($album->image_count ?? 0) ?> photos</p>
+                            <h4><?= htmlspecialchars(langField($album, 'title')) ?></h4>
+                            <p><?= __('gallery.photos', [$album->image_count ?? 0]) ?></p>
                         </div>
                     </a>
                 <?php endforeach; ?>
@@ -35,11 +35,11 @@
             <?php if (!empty($pagination) && $pagination['total_pages'] > 1): ?>
                 <div class="srisai-pagination">
                     <?php if ($pagination['page'] > 1): ?>
-                        <a href="?page=<?= $pagination['page'] - 1 ?>" class="srisai-btn srisai-btn--outline srisai-btn--sm">&laquo; Previous</a>
+                        <a href="?page=<?= $pagination['page'] - 1 ?>" class="srisai-btn srisai-btn--outline srisai-btn--sm">&laquo; <?= __('pagination.previous') ?></a>
                     <?php endif; ?>
-                    <span class="srisai-pagination__info">Page <?= $pagination['page'] ?> of <?= $pagination['total_pages'] ?></span>
+                    <span class="srisai-pagination__info"><?= __('pagination.page_of', [$pagination['page'], $pagination['total_pages']]) ?></span>
                     <?php if ($pagination['page'] < $pagination['total_pages']): ?>
-                        <a href="?page=<?= $pagination['page'] + 1 ?>" class="srisai-btn srisai-btn--outline srisai-btn--sm">Next &raquo;</a>
+                        <a href="?page=<?= $pagination['page'] + 1 ?>" class="srisai-btn srisai-btn--outline srisai-btn--sm"><?= __('pagination.next') ?> &raquo;</a>
                     <?php endif; ?>
                 </div>
             <?php endif; ?>

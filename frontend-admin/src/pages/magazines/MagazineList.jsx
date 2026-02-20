@@ -7,8 +7,10 @@ import SearchBar from '../../components/SearchBar';
 import StatusBadge from '../../components/StatusBadge';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import MagazineForm from './MagazineForm';
+import { useLang } from '../../contexts/LangContext';
 
 export default function MagazineList() {
+  const { t } = useLang();
   const [items, setItems] = useState([]);
   const [pagination, setPagination] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -44,16 +46,16 @@ export default function MagazineList() {
   const handleSaved = () => { setShowForm(false); setEditItem(null); fetchItems(); };
 
   const columns = [
-    { key: 'title', label: 'Title', render: (v) => <strong>{v}</strong> },
+    { key: 'title', label: t('table.title'), render: (v) => <strong>{v}</strong> },
     { key: 'issue_number', label: 'Issue', width: '80px' },
     { key: 'issue_month', label: 'Month', width: '100px' },
     { key: 'issue_year', label: 'Year', width: '80px' },
-    { key: 'status', label: 'Status', width: '100px', render: (v) => <StatusBadge status={v} /> },
+    { key: 'status', label: t('table.status'), width: '100px', render: (v) => <StatusBadge status={v} /> },
     {
-      key: 'id', label: 'Actions', width: '150px', render: (_, row) => (
+      key: 'id', label: t('table.actions'), width: '150px', render: (_, row) => (
         <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <button className="btn btn-sm btn-outline" onClick={(e) => { e.stopPropagation(); setEditItem(row); setShowForm(true); }}>Edit</button>
-          <button className="btn btn-sm btn-danger" onClick={(e) => { e.stopPropagation(); setDeleteId(row.id); }}>Delete</button>
+          <button className="btn btn-sm btn-outline" onClick={(e) => { e.stopPropagation(); setEditItem(row); setShowForm(true); }}>{t('common.edit')}</button>
+          <button className="btn btn-sm btn-danger" onClick={(e) => { e.stopPropagation(); setDeleteId(row.id); }}>{t('common.delete')}</button>
         </div>
       )
     },
@@ -61,17 +63,17 @@ export default function MagazineList() {
 
   return (
     <div>
-      <h1 className="page-title">Magazines</h1>
+      <h1 className="page-title">{t('pages.magazines')}</h1>
       <div className="page-toolbar">
-        <SearchBar onSearch={(v) => { setSearch(v); setPage(1); }} placeholder="Search magazines..." />
+        <SearchBar onSearch={(v) => { setSearch(v); setPage(1); }} placeholder={t('btn.search_magazines')} />
         <div className="page-toolbar__spacer" />
         <button className="btn btn-primary" onClick={() => { setEditItem(null); setShowForm(true); }}>
-          <HiOutlinePlus size={18} /> New Issue
+          <HiOutlinePlus size={18} /> {t('btn.new_magazine')}
         </button>
       </div>
       <DataTable columns={columns} data={items} loading={loading} pagination={pagination} onPageChange={setPage} />
       {showForm && <MagazineForm item={editItem} onClose={() => { setShowForm(false); setEditItem(null); }} onSaved={handleSaved} />}
-      <ConfirmDialog isOpen={!!deleteId} onClose={() => setDeleteId(null)} onConfirm={handleDelete} message="This magazine issue will be permanently deleted." />
+      <ConfirmDialog isOpen={!!deleteId} onClose={() => setDeleteId(null)} onConfirm={handleDelete} message={t('confirm.delete_magazine')} />
     </div>
   );
 }

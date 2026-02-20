@@ -66,6 +66,9 @@ class MagazineController extends Controller
             'slug'           => $mag->slug,
             'excerpt'        => $mag->excerpt,
             'content'        => $mag->content,
+            'title_ta'       => $mag->title_ta,
+            'excerpt_ta'     => $mag->excerpt_ta,
+            'content_ta'     => $mag->content_ta,
             'featured_image' => $mag->featured_image,
             'issue_number'   => $mag->issue_number,
             'issue_date'     => $mag->issue_date,
@@ -113,6 +116,9 @@ class MagazineController extends Controller
             'slug'           => $slug,
             'content'        => $data['content'] ?? '',
             'excerpt'        => $data['excerpt'] ?? null,
+            'title_ta'       => $data['title_ta'] ?? null,
+            'excerpt_ta'     => $data['excerpt_ta'] ?? null,
+            'content_ta'     => $data['content_ta'] ?? null,
             'featured_image' => $data['featured_image'] ?? null,
             'issue_number'   => $data['issue_number'] ?? null,
             'issue_date'     => $data['issue_date'] ?? null,
@@ -157,7 +163,7 @@ class MagazineController extends Controller
         }
 
         $updateData = [];
-        foreach (['title', 'content', 'excerpt', 'featured_image', 'issue_number', 'issue_date', 'pdf_file', 'category_id', 'status', 'is_featured'] as $field) {
+        foreach (['title', 'title_ta', 'content', 'content_ta', 'excerpt', 'excerpt_ta', 'featured_image', 'issue_number', 'issue_date', 'pdf_file', 'category_id', 'status', 'is_featured'] as $field) {
             if (array_key_exists($field, $data)) {
                 $updateData[$field] = $data[$field];
             }

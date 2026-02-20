@@ -37,6 +37,31 @@ date_default_timezone_set('Asia/Kolkata');
 // Initialize database connection
 $db = App\Core\Database::getInstance();
 
+// Boot language system and register global helpers
+App\Helpers\Lang::boot();
+if (!function_exists('__')) {
+    function __(string $key, array $replace = []): string {
+        return App\Helpers\Lang::get($key, $replace);
+    }
+}
+if (!function_exists('t')) {
+    function t(string $key, array $replace = []): string {
+        return App\Helpers\Lang::get($key, $replace);
+    }
+}
+// langField($obj, 'field') — returns Tamil value if lang=ta and _ta field exists, else English
+if (!function_exists('langField')) {
+    function langField(object $obj, string $field): string {
+        if (App\Helpers\Lang::current() === 'ta') {
+            $taField = $field . '_ta';
+            if (!empty($obj->$taField)) {
+                return $obj->$taField;
+            }
+        }
+        return $obj->$field ?? '';
+    }
+}
+
 // Initialize router
 $router = new App\Core\Router();
 

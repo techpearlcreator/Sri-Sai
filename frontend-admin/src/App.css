@@ -280,6 +280,25 @@ a { text-decoration: none; color: inherit; }
 .sidebar__nav::-webkit-scrollbar-track { background: transparent; }
 .sidebar__nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
 
+.sidebar__divider {
+  padding: 0.6rem 1.25rem 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.sidebar__divider span {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.3);
+}
+
+.sidebar__hr {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin: 0.5rem 1.25rem;
+}
+
 .sidebar__link {
   display: flex; align-items: center; gap: 0.85rem;
   padding: 0.72rem 1.25rem;
@@ -363,6 +382,23 @@ a { text-decoration: none; color: inherit; }
   font-weight: 600;
 }
 
+.topbar__lang {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  cursor: pointer;
+  color: var(--text-light);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  transition: var(--transition);
+  margin-right: 0.5rem;
+}
+.topbar__lang:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.5);
+}
 .topbar__logout {
   background: none; border: none;
   cursor: pointer;
@@ -711,6 +747,34 @@ a { text-decoration: none; color: inherit; }
   border-top: 1px solid var(--border-light);
 }
 
+/* Translate Button */
+.btn-translate {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  background: linear-gradient(135deg, #9FA73E 0%, #8a912f 100%);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  margin-bottom: 1rem;
+}
+.btn-translate:hover:not(:disabled) { opacity: 0.88; transform: translateY(-1px); }
+.btn-translate:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* Tamil section header row */
+.tamil-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.tamil-section-header h4 { margin: 0; color: var(--primary); }
+
 /* =====================================================
    GALLERY GRID
    ===================================================== */
@@ -908,4 +972,44 @@ a { text-decoration: none; color: inherit; }
   .detail-label { min-width: auto; }
   .settings-tabs { overflow-x: auto; }
   .page-title { font-size: 1.25rem; }
+  .bilingual-grid { grid-template-columns: 1fr; }
+  .bilingual-col + .bilingual-col { border-top: 2px dashed var(--border); padding-top: 1.5rem; margin-top: 0.5rem; }
+}
+
+/* =====================================================
+   BILINGUAL SIDE-BY-SIDE FORM LAYOUT
+   ===================================================== */
+.bilingual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  margin-bottom: 1rem;
+}
+
+.bilingual-col {}
+
+.bilingual-col-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+}
+
+.bilingual-col-header.col-en {
+  background: rgba(95, 44, 112, 0.08);
+  color: var(--primary);
+  border-left: 3px solid var(--primary);
+}
+
+.bilingual-col-header.col-ta {
+  background: rgba(159, 167, 62, 0.1);
+  color: var(--accent-hover);
+  border-left: 3px solid var(--accent);
 }

@@ -2,9 +2,9 @@
 <div class="srisai-page-header">
     <div class="srisai-container">
         <div class="srisai-breadcrumb">
-            <a href="<?= $baseUrl ?>/">Home</a> / <a href="<?= $baseUrl ?>/events">Events</a> / <span><?= htmlspecialchars($event->title) ?></span>
+            <a href="<?= $baseUrl ?>/"><?= __('nav.home') ?></a> / <a href="<?= $baseUrl ?>/events"><?= __('nav.events') ?></a> / <span><?= htmlspecialchars(langField($event, 'title')) ?></span>
         </div>
-        <h1><?= htmlspecialchars($event->title) ?></h1>
+        <h1><?= htmlspecialchars(langField($event, 'title')) ?></h1>
     </div>
 </div>
 
@@ -29,16 +29,16 @@
 
                 <?php if (!empty($event->featured_image)): ?>
                     <div class="srisai-article__image">
-                        <img src="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($event->featured_image) ?>" alt="<?= htmlspecialchars($event->title) ?>">
+                        <img src="<?= $baseUrl ?>/storage/uploads/<?= htmlspecialchars($event->featured_image) ?>" alt="<?= htmlspecialchars(langField($event, 'title')) ?>">
                     </div>
                 <?php endif; ?>
 
                 <div class="srisai-article__content">
-                    <?= $event->description ?? '' ?>
+                    <?= langField($event, 'description') ?>
                 </div>
 
                 <div class="srisai-article__nav">
-                    <a href="<?= $baseUrl ?>/events" class="srisai-btn srisai-btn--outline">← Back to Events</a>
+                    <a href="<?= $baseUrl ?>/events" class="srisai-btn srisai-btn--outline"><?= __('btn.back_events') ?></a>
                 </div>
             </article>
         </div>

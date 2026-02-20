@@ -7,8 +7,10 @@ import SearchBar from '../../components/SearchBar';
 import StatusBadge from '../../components/StatusBadge';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import BlogForm from './BlogForm';
+import { useLang } from '../../contexts/LangContext';
 
 export default function BlogList() {
+  const { t } = useLang();
   const [blogs, setBlogs] = useState([]);
   const [pagination, setPagination] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -48,15 +50,15 @@ export default function BlogList() {
   };
 
   const columns = [
-    { key: 'title', label: 'Title', render: (v) => <strong>{v}</strong> },
-    { key: 'status', label: 'Status', width: '100px', render: (v) => <StatusBadge status={v} /> },
-    { key: 'view_count', label: 'Views', width: '80px' },
-    { key: 'created_at', label: 'Created', width: '120px', render: (v) => v ? new Date(v).toLocaleDateString() : '—' },
+    { key: 'title', label: t('table.title'), render: (v) => <strong>{v}</strong> },
+    { key: 'status', label: t('table.status'), width: '100px', render: (v) => <StatusBadge status={v} /> },
+    { key: 'view_count', label: t('table.views'), width: '80px' },
+    { key: 'created_at', label: t('table.created'), width: '120px', render: (v) => v ? new Date(v).toLocaleDateString() : '—' },
     {
-      key: 'id', label: 'Actions', width: '150px', render: (_, row) => (
+      key: 'id', label: t('table.actions'), width: '150px', render: (_, row) => (
         <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <button className="btn btn-sm btn-outline" onClick={(e) => { e.stopPropagation(); setEditItem(row); setShowForm(true); }}>Edit</button>
-          <button className="btn btn-sm btn-danger" onClick={(e) => { e.stopPropagation(); setDeleteId(row.id); }}>Delete</button>
+          <button className="btn btn-sm btn-outline" onClick={(e) => { e.stopPropagation(); setEditItem(row); setShowForm(true); }}>{t('common.edit')}</button>
+          <button className="btn btn-sm btn-danger" onClick={(e) => { e.stopPropagation(); setDeleteId(row.id); }}>{t('common.delete')}</button>
         </div>
       )
     },
@@ -64,12 +66,12 @@ export default function BlogList() {
 
   return (
     <div>
-      <h1 className="page-title">Blog Posts</h1>
+      <h1 className="page-title">{t('pages.blogs')}</h1>
       <div className="page-toolbar">
-        <SearchBar onSearch={(v) => { setSearch(v); setPage(1); }} placeholder="Search blogs..." />
+        <SearchBar onSearch={(v) => { setSearch(v); setPage(1); }} placeholder={t('btn.search_blogs')} />
         <div className="page-toolbar__spacer" />
         <button className="btn btn-primary" onClick={() => { setEditItem(null); setShowForm(true); }}>
-          <HiOutlinePlus size={18} /> New Post
+          <HiOutlinePlus size={18} /> {t('btn.new_post')}
         </button>
       </div>
 
@@ -93,7 +95,7 @@ export default function BlogList() {
         isOpen={!!deleteId}
         onClose={() => setDeleteId(null)}
         onConfirm={handleDelete}
-        message="This blog post will be permanently deleted."
+        message={t('confirm.delete_blog')}
       />
     </div>
   );

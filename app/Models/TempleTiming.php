@@ -8,7 +8,7 @@ class TempleTiming extends Model
 {
     protected static string $table = 'temple_timings';
     protected static array $fillable = [
-        'title', 'day_type', 'start_time', 'end_time',
+        'title', 'title_ta', 'day_type', 'start_time', 'end_time',
         'description', 'location', 'is_active', 'sort_order',
     ];
 

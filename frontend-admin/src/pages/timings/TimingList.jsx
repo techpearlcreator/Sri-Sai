@@ -5,8 +5,10 @@ import toast from 'react-hot-toast';
 import DataTable from '../../components/DataTable';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import TimingForm from './TimingForm';
+import { useLang } from '../../contexts/LangContext';
 
 export default function TimingList() {
+  const { t } = useLang();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -40,12 +42,12 @@ export default function TimingList() {
     { key: 'day_type', label: 'Day', width: '120px', render: (v) => (v || '').replace(/_/g, ' ') },
     { key: 'start_time', label: 'Start', width: '100px' },
     { key: 'end_time', label: 'End', width: '100px' },
-    { key: 'location', label: 'Temple', width: '180px' },
+    { key: 'location', label: t('table.temple'), width: '180px' },
     {
-      key: 'id', label: 'Actions', width: '150px', render: (_, row) => (
+      key: 'id', label: t('table.actions'), width: '150px', render: (_, row) => (
         <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <button className="btn btn-sm btn-outline" onClick={(e) => { e.stopPropagation(); setEditItem(row); setShowForm(true); }}>Edit</button>
-          <button className="btn btn-sm btn-danger" onClick={(e) => { e.stopPropagation(); setDeleteId(row.id); }}>Delete</button>
+          <button className="btn btn-sm btn-outline" onClick={(e) => { e.stopPropagation(); setEditItem(row); setShowForm(true); }}>{t('common.edit')}</button>
+          <button className="btn btn-sm btn-danger" onClick={(e) => { e.stopPropagation(); setDeleteId(row.id); }}>{t('common.delete')}</button>
         </div>
       )
     },
@@ -53,16 +55,16 @@ export default function TimingList() {
 
   return (
     <div>
-      <h1 className="page-title">Temple Timings</h1>
+      <h1 className="page-title">{t('pages.timings')}</h1>
       <div className="page-toolbar">
         <div className="page-toolbar__spacer" />
         <button className="btn btn-primary" onClick={() => { setEditItem(null); setShowForm(true); }}>
-          <HiOutlinePlus size={18} /> Add Timing
+          <HiOutlinePlus size={18} /> {t('btn.new_timing')}
         </button>
       </div>
       <DataTable columns={columns} data={items} loading={loading} />
       {showForm && <TimingForm item={editItem} onClose={() => { setShowForm(false); setEditItem(null); }} onSaved={handleSaved} />}
-      <ConfirmDialog isOpen={!!deleteId} onClose={() => setDeleteId(null)} onConfirm={handleDelete} message="This timing entry will be permanently deleted." />
+      <ConfirmDialog isOpen={!!deleteId} onClose={() => setDeleteId(null)} onConfirm={handleDelete} message={t('confirm.delete_timing')} />
     </div>
   );
 }

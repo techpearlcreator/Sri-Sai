@@ -49,11 +49,13 @@ class TempleTimingController extends Controller
 
         $this->json([
             'id'          => (int) $timing->id,
-            'title'       => $timing->title,
+            'title'          => $timing->title,
+            'title_ta'       => $timing->title_ta,
             'day_type'    => $timing->day_type,
             'start_time'  => $timing->start_time,
             'end_time'    => $timing->end_time,
-            'description' => $timing->description,
+            'description'    => $timing->description,
+            'description_ta' => $timing->description_ta,
             'location'    => $timing->location,
             'is_active'   => (bool) $timing->is_active,
             'sort_order'  => (int) $timing->sort_order,
@@ -87,7 +89,9 @@ class TempleTimingController extends Controller
             'day_type'    => $data['day_type'],
             'start_time'  => $data['start_time'],
             'end_time'    => $data['end_time'],
-            'description' => $data['description'] ?? null,
+            'description'    => $data['description'] ?? null,
+            'title_ta'       => $data['title_ta'] ?? null,
+            'description_ta' => $data['description_ta'] ?? null,
             'location'    => $data['location'] ?? null,
             'is_active'   => $data['is_active'] ?? 1,
             'sort_order'  => $data['sort_order'] ?? 0,
@@ -107,7 +111,7 @@ class TempleTimingController extends Controller
 
         $data = $this->getJsonBody();
         $updateData = [];
-        foreach (['title', 'day_type', 'start_time', 'end_time', 'description', 'location', 'is_active', 'sort_order'] as $field) {
+        foreach (['title', 'title_ta', 'day_type', 'start_time', 'end_time', 'description', 'description_ta', 'location', 'is_active', 'sort_order'] as $field) {
             if (array_key_exists($field, $data)) {
                 $updateData[$field] = $data[$field];
             }

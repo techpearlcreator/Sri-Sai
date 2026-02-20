@@ -57,7 +57,9 @@ class GalleryController extends Controller
             'id'          => (int) $album->id,
             'title'       => $album->title,
             'slug'        => $album->slug,
-            'description' => $album->description,
+            'description'    => $album->description,
+            'title_ta'       => $album->title_ta,
+            'description_ta' => $album->description_ta,
             'cover_image' => $album->cover_image,
             'status'      => $album->status,
             'sort_order'  => (int) $album->sort_order,
@@ -98,7 +100,9 @@ class GalleryController extends Controller
         $album = GalleryAlbum::create([
             'title'       => $data['title'],
             'slug'        => $slug,
-            'description' => $data['description'] ?? null,
+            'description'    => $data['description'] ?? null,
+            'title_ta'       => $data['title_ta'] ?? null,
+            'description_ta' => $data['description_ta'] ?? null,
             'cover_image' => $data['cover_image'] ?? null,
             'category_id' => $data['category_id'] ?? null,
             'created_by'  => (int) $user->id,
@@ -120,7 +124,7 @@ class GalleryController extends Controller
 
         $data = $this->getJsonBody();
         $updateData = [];
-        foreach (['title', 'description', 'cover_image', 'category_id', 'status', 'sort_order'] as $field) {
+        foreach (['title', 'title_ta', 'description', 'description_ta', 'cover_image', 'category_id', 'status', 'sort_order'] as $field) {
             if (array_key_exists($field, $data)) {
                 $updateData[$field] = $data[$field];
             }

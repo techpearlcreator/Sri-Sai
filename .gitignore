@@ -1,7 +1,9 @@
-# Environment
+# ─── Environment & Secrets ────────────────────────────────────────
 .env
+.env.local
+.env.production
 
-# Storage (uploads and temp files)
+# ─── Storage (user uploads, cache, logs) ──────────────────────────
 storage/uploads/*
 storage/cache/*
 storage/logs/*
@@ -10,25 +12,49 @@ storage/logs/*
 !storage/cache/.gitkeep
 !storage/logs/.gitkeep
 
-# Composer
+# ─── PHP Dependencies ─────────────────────────────────────────────
 /vendor/
 
-# React admin dependencies and build
+# ─── React Admin — dependencies & compiled output ─────────────────
 frontend-admin/node_modules/
 frontend-admin/dist/
 
-# React admin build (built per deployment)
+# ─── Deployed admin build (generated at deploy time) ──────────────
 public/admin/static/
 public/admin/index.html
 public/admin/assets/
 
-# OS files
+# ─── Backup files ─────────────────────────────────────────────────
+*.bak
+*.backup
+*.orig
+
+# ─── Temporary test files ─────────────────────────────────────────
+test-*.html
+test-*.php
+
+# ─── Windows setup/utility scripts (local dev only) ───────────────
+setup-mobile-access.bat
+verify-mobile-setup.bat
+*.bat
+
+# ─── OS generated files ───────────────────────────────────────────
 Thumbs.db
 .DS_Store
 desktop.ini
+ehthumbs.db
 
-# IDE
+# ─── IDE files ────────────────────────────────────────────────────
 .vscode/
 .idea/
 *.swp
 *.swo
+*.sublime-project
+*.sublime-workspace
+
+# ─── PHP error logs ───────────────────────────────────────────────
+*.log
+php_errorlog
+
+# ─── Composer lock (keep composer.json, ignore lock in dev) ───────
+# composer.lock   # uncomment if you want to exclude lock file

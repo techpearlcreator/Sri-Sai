@@ -8,8 +8,8 @@ class Magazine extends Model
 {
     protected static string $table = 'magazines';
     protected static array $fillable = [
-        'category_id', 'created_by', 'title', 'slug', 'excerpt', 'content',
-        'featured_image', 'issue_number', 'issue_date', 'pdf_file',
+        'category_id', 'created_by', 'title', 'title_ta', 'slug', 'excerpt', 'excerpt_ta',
+        'content', 'content_ta', 'featured_image', 'issue_number', 'issue_date', 'pdf_file',
         'status', 'is_featured', 'published_at',
     ];
 

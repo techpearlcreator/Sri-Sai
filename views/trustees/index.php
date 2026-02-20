@@ -1,8 +1,8 @@
 <!-- Page Header -->
 <div class="srisai-page-header">
     <div class="srisai-container">
-        <h1>Our Trustees</h1>
-        <p>Meet the dedicated team serving Sri Sai Mission</p>
+        <h1><?= __('trustees.title') ?></h1>
+        <p><?= __('trustees.subtitle') ?></p>
     </div>
 </div>
 
@@ -11,7 +11,7 @@
     <div class="srisai-section srisai-section--white">
         <div class="srisai-container">
             <div class="srisai-section__header">
-                <h2 class="srisai-section__title">Main Trustees</h2>
+                <h2 class="srisai-section__title"><?= __('trustees.main') ?></h2>
             </div>
 
             <div class="srisai-trustees-grid">
@@ -42,7 +42,7 @@
     <div class="srisai-section srisai-section--light">
         <div class="srisai-container">
             <div class="srisai-section__header">
-                <h2 class="srisai-section__title">Co-opted Trustees</h2>
+                <h2 class="srisai-section__title"><?= __('trustees.coopted') ?></h2>
             </div>
 
             <div class="srisai-trustees-grid">
@@ -72,7 +72,7 @@
     <div class="srisai-section srisai-section--light">
         <div class="srisai-container">
             <div class="srisai-empty">
-                <p>Trustee information will be available soon.</p>
+                <p><?= __('trustees.empty') ?></p>
             </div>
         </div>
     </div>

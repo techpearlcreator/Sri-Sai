@@ -8,8 +8,8 @@ class Blog extends Model
 {
     protected static string $table = 'blogs';
     protected static array $fillable = [
-        'category_id', 'created_by', 'title', 'slug', 'excerpt', 'content',
-        'featured_image', 'status', 'is_featured', 'published_at',
+        'category_id', 'created_by', 'title', 'title_ta', 'slug', 'excerpt', 'excerpt_ta',
+        'content', 'content_ta', 'featured_image', 'status', 'is_featured', 'published_at',
     ];
 
     /**

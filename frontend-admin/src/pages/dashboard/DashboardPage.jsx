@@ -5,17 +5,19 @@ import {
   HiOutlinePhotograph, HiOutlineUserGroup, HiOutlineCurrencyRupee,
   HiOutlineMail, HiOutlineCollection
 } from 'react-icons/hi';
+import { useLang } from '../../contexts/LangContext';
 
-const statCards = [
-  { key: 'blogs',      label: 'Blog Posts',  icon: HiOutlineDocumentText, color: '#5F2C70' },
-  { key: 'magazines',  label: 'Magazines',   icon: HiOutlineBookOpen,     color: '#1D0427' },
-  { key: 'events',     label: 'Events',      icon: HiOutlineCalendar,     color: '#9FA73E' },
-  { key: 'trustees',   label: 'Trustees',    icon: HiOutlineUserGroup,    color: '#724D67' },
-  { key: 'contacts',   label: 'Messages',    icon: HiOutlineMail,         color: '#c0392b' },
-  { key: 'pages',      label: 'Pages',       icon: HiOutlineCollection,   color: '#2980b9' },
+const statCardDefs = [
+  { key: 'blogs',      tKey: 'dashboard.blogs',    icon: HiOutlineDocumentText, color: '#5F2C70' },
+  { key: 'magazines',  tKey: 'dashboard.magazines', icon: HiOutlineBookOpen,     color: '#1D0427' },
+  { key: 'events',     tKey: 'dashboard.events',    icon: HiOutlineCalendar,     color: '#9FA73E' },
+  { key: 'trustees',   tKey: 'dashboard.trustees',  icon: HiOutlineUserGroup,    color: '#724D67' },
+  { key: 'contacts',   tKey: 'dashboard.contacts',  icon: HiOutlineMail,         color: '#c0392b' },
+  { key: 'pages',      tKey: 'dashboard.pages',     icon: HiOutlineCollection,   color: '#2980b9' },
 ];
 
 export default function DashboardPage() {
+  const { t } = useLang();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -26,15 +28,15 @@ export default function DashboardPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <div className="loading">Loading dashboard...</div>;
-  if (!data) return <div className="error">Failed to load dashboard</div>;
+  if (loading) return <div className="loading">{t('dashboard.loading')}</div>;
+  if (!data) return <div className="error">{t('dashboard.failed')}</div>;
 
   return (
     <div className="dashboard">
-      <h1 className="page-title">Dashboard</h1>
+      <h1 className="page-title">{t('dashboard.title')}</h1>
 
       <div className="stat-grid">
-        {statCards.map(({ key, label, icon: Icon, color }) => {
+        {statCardDefs.map(({ key, tKey, icon: Icon, color }) => {
           const val = data.counts[key];
           const total = typeof val === 'object' ? val.total : val;
           const sub = typeof val === 'object'
@@ -48,7 +50,7 @@ export default function DashboardPage() {
               </div>
               <div className="stat-card__info">
                 <span className="stat-card__total">{total}</span>
-                <span className="stat-card__label">{label}</span>
+                <span className="stat-card__label">{t(tKey)}</span>
                 {sub && <span className="stat-card__sub">{sub}</span>}
               </div>
             </div>
@@ -62,7 +64,7 @@ export default function DashboardPage() {
           </div>
           <div className="stat-card__info">
             <span className="stat-card__total">{data.counts.donations?.total || 0}</span>
-            <span className="stat-card__label">Donations</span>
+            <span className="stat-card__label">{t('dashboard.donations')}</span>
             <span className="stat-card__sub">₹{(data.counts.donations?.amount || 0).toLocaleString()}</span>
           </div>
         </div>
@@ -74,7 +76,7 @@ export default function DashboardPage() {
           </div>
           <div className="stat-card__info">
             <span className="stat-card__total">{data.counts.gallery_albums || 0}</span>
-            <span className="stat-card__label">Albums</span>
+            <span className="stat-card__label">{t('pages.gallery')}</span>
             <span className="stat-card__sub">{data.counts.gallery_images || 0} images</span>
           </div>
         </div>

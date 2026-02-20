@@ -52,10 +52,13 @@ class TrusteeController extends Controller
 
         $this->json([
             'id'            => (int) $trustee->id,
-            'name'          => $trustee->name,
-            'designation'   => $trustee->designation,
+            'name'           => $trustee->name,
+            'name_ta'        => $trustee->name_ta,
+            'designation'    => $trustee->designation,
+            'designation_ta' => $trustee->designation_ta,
             'trustee_type'  => $trustee->trustee_type,
-            'bio'           => $trustee->bio,
+            'bio'            => $trustee->bio,
+            'bio_ta'         => $trustee->bio_ta,
             'photo'         => $trustee->photo,
             'phone'         => $trustee->phone,
             'email'         => $trustee->email,
@@ -93,7 +96,10 @@ class TrusteeController extends Controller
             'name'          => $data['name'],
             'designation'   => $data['designation'],
             'trustee_type'  => $data['trustee_type'],
-            'bio'           => $data['bio'] ?? null,
+            'bio'            => $data['bio'] ?? null,
+            'name_ta'        => $data['name_ta'] ?? null,
+            'designation_ta' => $data['designation_ta'] ?? null,
+            'bio_ta'         => $data['bio_ta'] ?? null,
             'photo'         => $data['photo'] ?? null,
             'phone'         => $data['phone'] ?? null,
             'email'         => $data['email'] ?? null,
@@ -116,7 +122,7 @@ class TrusteeController extends Controller
 
         $data = $this->getJsonBody();
         $updateData = [];
-        foreach (['name', 'designation', 'trustee_type', 'bio', 'photo', 'phone', 'email', 'qualification', 'sort_order', 'is_active'] as $field) {
+        foreach (['name', 'name_ta', 'designation', 'designation_ta', 'trustee_type', 'bio', 'bio_ta', 'photo', 'phone', 'email', 'qualification', 'sort_order', 'is_active'] as $field) {
             if (array_key_exists($field, $data)) {
                 $updateData[$field] = $data[$field];
             }

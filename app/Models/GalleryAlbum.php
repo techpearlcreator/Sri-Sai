@@ -8,7 +8,7 @@ class GalleryAlbum extends Model
 {
     protected static string $table = 'gallery_albums';
     protected static array $fillable = [
-        'category_id', 'created_by', 'title', 'slug', 'description',
+        'category_id', 'created_by', 'title', 'title_ta', 'slug', 'description', 'description_ta',
         'cover_image', 'status', 'sort_order', 'image_count',
     ];
 
