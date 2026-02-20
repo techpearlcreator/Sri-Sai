@@ -3,7 +3,7 @@
  * Master Layout — wraps all public pages.
  * Variables available: $__content, $pageTitle, $pageClass, $baseUrl, $assetUrl
  */
-$baseUrl = '/newsite/public';
+$baseUrl = '/sai_sudarshan/public';
 $assetUrl   = $baseUrl . '/assets';
 $currentLang = App\Helpers\Lang::current();
 $htmlLang    = $currentLang === 'ta' ? 'ta' : 'en';
