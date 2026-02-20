@@ -1,4 +1,5 @@
 RewriteEngine On
+RewriteBase /newsite/public/
 
 # Pass Authorization header through to PHP (Apache strips it by default)
 RewriteCond %{HTTP:Authorization} .+
