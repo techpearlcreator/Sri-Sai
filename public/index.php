@@ -38,6 +38,7 @@ date_default_timezone_set('Asia/Kolkata');
 $db = App\Core\Database::getInstance();
 
 // Boot language system and register global helpers
+session_name('SRISAI_NEW_SESS'); 
 App\Helpers\Lang::boot();
 if (!function_exists('__')) {
     function __(string $key, array $replace = []): string {
@@ -71,7 +72,7 @@ require ROOT_PATH . '/routes/web.php';
 
 // Get the request URI
 $requestUri = $_SERVER['REQUEST_URI'];
-$basePath = '/srisai/public';
+$basePath = '/sai_sudarshan/public';
 
 // Strip base path to get clean URL
 $url = parse_url($requestUri, PHP_URL_PATH);
